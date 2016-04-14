@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://TaoSama.github.io/2016/04/07/HDU%205639%20Deletion%EF%BC%88%E6%9C%80%E5%A4%A7%E6%B5%81%EF%BC%89/</loc>
+    
+    <lastmod>2016-04-13T08:37:06.611Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://TaoSama.github.io/2016/04/12/HDU%205289%20Assignment%EF%BC%88two%20pointers%EF%BC%89/</loc>
     
     <lastmod>2016-04-12T14:33:33.894Z</lastmod>
@@ -152,13 +159,6 @@
     <loc>http://TaoSama.github.io/2016/04/07/HDU%205638%20Toposort%EF%BC%88%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F%EF%BC%89/</loc>
     
     <lastmod>2016-04-07T14:43:07.684Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>http://TaoSama.github.io/2016/04/07/HDU%205639%20Deletion%EF%BC%88%E7%BD%91%E7%BB%9C%E6%B5%81%EF%BC%89/</loc>
-    
-    <lastmod>2016-04-07T14:43:02.719Z</lastmod>
     
   </url>
   
