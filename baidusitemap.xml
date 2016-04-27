@@ -4,31 +4,8 @@
 
     
   <url>
-    <loc>http://TaoSama.github.io/2016/04/26/HDU%205296%20Annoying%20problem%EF%BC%88LCA%EF%BC%89/</loc>
-    <lastmod>2016-04-27T12:10:42.206Z</lastmod>
-    <data>
-        <display>
-        <title>HDU 5296 Annoying problem（LCA）</title>
-        <pubTime>2016-04-26T14:44:10.000Z</pubTime>
-        
-        <tag>LCA</tag>
-         
-         
-           
-             
-              <breadCrumb title="图论" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/"/>
-          
-             
-              <breadCrumb title="LCA" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/LCA/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
     <loc>http://TaoSama.github.io/2016/04/27/HDU%205299%20Circles%20Game%20(%E5%9C%86%E7%9A%84%E6%89%AB%E6%8F%8F%E7%BA%BF%E3%80%81%E6%A0%91%E4%B8%8Asg)/</loc>
-    <lastmod>2016-04-27T12:09:02.314Z</lastmod>
+    <lastmod>2016-04-27T12:18:49.530Z</lastmod>
     <data>
         <display>
         <title>HDU 5299 Circles Game (圆的扫描线、树上sg)</title>
@@ -45,6 +22,29 @@
           
              
               <breadCrumb title="扫描线" url="http://TaoSama.github.io/categories/%E8%AE%A1%E7%AE%97%E5%87%A0%E4%BD%95/%E6%89%AB%E6%8F%8F%E7%BA%BF/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/04/26/HDU%205296%20Annoying%20problem%EF%BC%88LCA%EF%BC%89/</loc>
+    <lastmod>2016-04-27T12:10:42.206Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5296 Annoying problem（LCA）</title>
+        <pubTime>2016-04-26T14:44:10.000Z</pubTime>
+        
+        <tag>LCA</tag>
+         
+         
+           
+             
+              <breadCrumb title="图论" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/"/>
+          
+             
+              <breadCrumb title="LCA" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/LCA/"/>
           
         </display>
     </data>
