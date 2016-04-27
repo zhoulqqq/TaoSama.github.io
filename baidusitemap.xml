@@ -4,6 +4,29 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/04/26/HDU%205296%20Annoying%20problem%EF%BC%88LCA%EF%BC%89/</loc>
+    <lastmod>2016-04-26T14:59:10.543Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5296 Annoying problem（LCA）</title>
+        <pubTime>2016-04-26T14:44:10.000Z</pubTime>
+        
+        <tag>LCA</tag>
+         
+         
+           
+             
+              <breadCrumb title="图论" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/"/>
+          
+             
+              <breadCrumb title="LCA" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/LCA/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/04/25/ZOJ%203946%20Highway%20Project%EF%BC%88%E6%9C%80%E7%9F%AD%E8%B7%AF%E3%80%81MST%EF%BC%89/</loc>
     <lastmod>2016-04-24T20:30:44.687Z</lastmod>
     <data>
@@ -857,9 +880,9 @@
         <title>Educational Codeforces Round 10 C. Foe Pairs（离线思想、贪心）</title>
         <pubTime>2016-03-28T13:50:10.000Z</pubTime>
         
-        <tag>离线</tag>
-         
         <tag>贪心</tag>
+         
+        <tag>离线</tag>
          
          
            
