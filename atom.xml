@@ -90,7 +90,7 @@
     <link href="http://TaoSama.github.io/2016/04/29/CSU%201720%20How%20to%20Get%202%5En%EF%BC%88trie%E4%B8%8A%E8%B4%AA%E5%BF%83%E3%80%81%E9%AB%98%E7%B2%BE%E5%BA%A6%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/04/29/CSU 1720 How to Get 2^n（trie上贪心、高精度）/</id>
     <published>2016-04-28T16:46:10.000Z</published>
-    <updated>2016-04-28T16:53:35.842Z</updated>
+    <updated>2016-04-29T14:09:32.211Z</updated>
     
     <content type="html">&lt;p&gt;题意：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -111,9 +111,9 @@
     
     </summary>
     
-      <category term="数据结构" scheme="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+      <category term="技巧" scheme="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/"/>
     
-      <category term="trie" scheme="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/trie/"/>
+      <category term="xor" scheme="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/xor/"/>
     
     
       <category term="trie上贪心" scheme="http://TaoSama.github.io/tags/trie%E4%B8%8A%E8%B4%AA%E5%BF%83/"/>
