@@ -4,12 +4,58 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/05/01/HDU%205661%20Claris%20and%20XOR%EF%BC%88xor%E8%B4%AA%E5%BF%83%EF%BC%89/</loc>
+    <lastmod>2016-05-01T12:20:42.341Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5661 Claris and XOR（xor贪心）</title>
+        <pubTime>2016-05-01T12:11:10.000Z</pubTime>
+        
+        <tag>贪心</tag>
+         
+         
+           
+             
+              <breadCrumb title="技巧" url="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/"/>
+          
+             
+              <breadCrumb title="xor" url="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/xor/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/05/01/HDU%205014%20Number%20Sequence%EF%BC%88xor%E8%B4%AA%E5%BF%83%EF%BC%89/</loc>
+    <lastmod>2016-05-01T12:11:34.900Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5014 Number Sequence（xor贪心）</title>
+        <pubTime>2016-05-01T12:06:10.000Z</pubTime>
+        
+        <tag>贪心</tag>
+         
+         
+           
+             
+              <breadCrumb title="技巧" url="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/"/>
+          
+             
+              <breadCrumb title="xor" url="http://TaoSama.github.io/categories/%E6%8A%80%E5%B7%A7/xor/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/05/01/HDU%204757%20Tree%EF%BC%88%E5%8F%AF%E6%8C%81%E4%B9%85%E5%8C%96trie%EF%BC%89/</loc>
-    <lastmod>2016-05-01T11:48:46.887Z</lastmod>
+    <lastmod>2016-05-01T12:04:40.350Z</lastmod>
     <data>
         <display>
         <title>HDU 4757 Tree（可持久化trie）</title>
-        <pubTime>2016-05-01T08:25:10.000Z</pubTime>
+        <pubTime>2016-05-01T08:30:10.000Z</pubTime>
         
         <tag>可持久trie</tag>
          
