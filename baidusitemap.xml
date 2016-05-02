@@ -4,8 +4,49 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/05/02/HDU%204125%20Moles%EF%BC%88nlogn%E5%BB%BA%E7%AB%8B%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91%E3%80%81kmp%EF%BC%89/</loc>
+    <lastmod>2016-05-02T18:20:17.869Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 4125 Moles（nlogn建立二叉搜索树、kmp）</title>
+        <pubTime>2016-05-01T18:14:10.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="二叉搜索树" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E4%BA%8C%E5%8F%89%E6%90%9C%E7%B4%A2%E6%A0%91/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/05/02/HDU%204122%20Alice's%20mooncake%20shop%EF%BC%88%E8%B4%AA%E5%BF%83%E3%80%81RMQ%EF%BC%89/</loc>
+    <lastmod>2016-05-02T16:25:42.210Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 4122 Alice's mooncake shop（贪心、RMQ）</title>
+        <pubTime>2016-05-02T15:56:10.000Z</pubTime>
+        
+        <tag>RMQ</tag>
+         
+         
+           
+             
+              <breadCrumb title="贪心" url="http://TaoSama.github.io/categories/%E8%B4%AA%E5%BF%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/05/02/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%B0%8F%E7%BB%93/</loc>
-    <lastmod>2016-05-02T15:59:52.382Z</lastmod>
+    <lastmod>2016-05-02T16:07:27.745Z</lastmod>
     <data>
         <display>
         <title>常见错误小结</title>
