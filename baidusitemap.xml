@@ -4,6 +4,55 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/05/09/HDU%205375%20Gray%20code%EF%BC%88%E7%BA%BF%E6%80%A7dp%EF%BC%89/</loc>
+    <lastmod>2016-05-09T08:49:10.667Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5375 Gray code（线性dp）</title>
+        <pubTime>2016-05-09T08:42:10.000Z</pubTime>
+        
+        <tag>dp</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="动态规划" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+          
+             
+              <breadCrumb title="线性dp" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E7%BA%BF%E6%80%A7dp/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/05/09/HDU%205372%20Segment%20Game%EF%BC%88BIT%EF%BC%89/</loc>
+    <lastmod>2016-05-09T08:41:58.834Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5372 Segment Game（BIT）</title>
+        <pubTime>2016-05-09T08:24:10.000Z</pubTime>
+        
+        <tag>BIT</tag>
+         
+         
+           
+             
+              <breadCrumb title="数据结构" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/"/>
+          
+             
+              <breadCrumb title="树状数组" url="http://TaoSama.github.io/categories/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/%E6%A0%91%E7%8A%B6%E6%95%B0%E7%BB%84/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/05/09/CQUOJ%2021465%20%E9%83%A8%E8%90%BDMod%EF%BC%88%E5%B9%B6%E6%9F%A5%E9%9B%86%E3%80%81%E5%88%A0%E7%82%B9%20%20%E5%90%AF%E5%8F%91%E5%BC%8F%E5%90%88%E5%B9%B6%EF%BC%89/</loc>
     <lastmod>2016-05-08T18:17:16.977Z</lastmod>
     <data>
