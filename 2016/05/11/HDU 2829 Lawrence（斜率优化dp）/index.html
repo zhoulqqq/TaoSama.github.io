@@ -1,0 +1,426 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>HDU 2829 Lawrence（斜率优化dp） | TaoSama&#39;s Microcosm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="题意：
+
+$N\le 1000个点，点权c_i \le 100，划分成0\le M&amp;lt;N个连续段$$每段的权值w(x,\ y)=\sum_{i=x}^{y-1}\sum_{j=i+1}^y c_i\cdot c_j$$求一个划分使得段权值和最小，输出这个权值和$">
+<meta property="og:type" content="article">
+<meta property="og:title" content="HDU 2829 Lawrence（斜率优化dp）">
+<meta property="og:url" content="http://TaoSama.github.io/2016/05/11/HDU 2829 Lawrence（斜率优化dp）/index.html">
+<meta property="og:site_name" content="TaoSama's Microcosm">
+<meta property="og:description" content="题意：
+
+$N\le 1000个点，点权c_i \le 100，划分成0\le M&amp;lt;N个连续段$$每段的权值w(x,\ y)=\sum_{i=x}^{y-1}\sum_{j=i+1}^y c_i\cdot c_j$$求一个划分使得段权值和最小，输出这个权值和$">
+<meta property="og:updated_time" content="2016-05-10T19:43:47.722Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="HDU 2829 Lawrence（斜率优化dp）">
+<meta name="twitter:description" content="题意：
+
+$N\le 1000个点，点权c_i \le 100，划分成0\le M&amp;lt;N个连续段$$每段的权值w(x,\ y)=\sum_{i=x}^{y-1}\sum_{j=i+1}^y c_i\cdot c_j$$求一个划分使得段权值和最小，输出这个权值和$">
+  
+    <link rel="alternative" href="/atom.xml" title="TaoSama&#39;s Microcosm" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TaoSama&#39;s Microcosm</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Fighting for the Last Season</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+		<div id="search-form-wrap">
+		  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://TaoSama.github.io"></form>
+		</div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-HDU 2829 Lawrence（斜率优化dp）" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/05/11/HDU 2829 Lawrence（斜率优化dp）/" class="article-date">
+  <time datetime="2016-05-10T19:27:10.000Z" itemprop="datePublished">2016-05-11</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/动态规划/">动态规划</a>►<a class="article-category-link" href="/categories/动态规划/斜率优化/">斜率优化</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      HDU 2829 Lawrence（斜率优化dp）
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		<!-- Table of Contents -->
+			    
+        <p>题意：</p>
+<blockquote>
+<p>$N\le 1000个点，点权c_i \le 100，划分成0\le M&lt;N个连续段$<br>$每段的权值w(x,\ y)=\sum_{i=x}^{y-1}\sum_{j=i+1}^y c_i\cdot c_j$<br>$求一个划分使得段权值和最小，输出这个权值和$</p>
+</blockquote>
+<a id="more"></a>
+<p>分析：</p>
+<blockquote>
+<p>$f[j][i]:=前i个点划分成j段的最小权值和$<br>$f[j][i]=min\{\ f[j-1][k]+w(k+1,\ i)\ \}，然后斜率优化你懂的$<br>$s_i=\sum_{i=1}^n c_i，s2_i=\sum_{i=1}^n c_i^2$<br>$w(i,\ j)=\left((s_j-s_{i-1})^2-(s2_j-s2_{i-1}) \right)/2$<br>$slope(k,\ j)\Rightarrow $<br>$f_j+\left((s_i-s_{j})^2-(s2_i-s2_{j}) \right)/2&lt;f_k+\left((s_i-s_{k})^2-(s2_i-s2_{k}) \right)/2$<br>$slope(k,\ j)=\frac{(2f_j+s_j^2+s2_j)-(2f_k+s_k^2+s2_k)}{2(s_j-s_k)}&lt;s_i$<br>$然后就做完了，时间复杂度O(n^2)$</p>
+</blockquote>
+<p>代码：<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line">//</span><br><span class="line">//  Created by TaoSama on 2016-05-10</span><br><span class="line">//  Copyright (c) 2016 TaoSama. All rights reserved.</span><br><span class="line">//</span><br><span class="line">#pragma comment(linker, "/STACK:102400000,102400000")</span><br><span class="line">#include &lt;algorithm&gt;</span><br><span class="line">#include &lt;cctype&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;cstdio&gt;</span><br><span class="line">#include &lt;cstdlib&gt;</span><br><span class="line">#include &lt;cstring&gt;</span><br><span class="line">#include &lt;iomanip&gt;</span><br><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;map&gt;</span><br><span class="line">#include &lt;queue&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;set&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line"></span><br><span class="line">using namespace std;</span><br><span class="line">#define pr(x) cout &lt;&lt; #x &lt;&lt; " = " &lt;&lt; x &lt;&lt; "  "</span><br><span class="line">#define prln(x) cout &lt;&lt; #x &lt;&lt; " = " &lt;&lt; x &lt;&lt; endl</span><br><span class="line">const int N = 1e3 + 10, INF = 0x3f3f3f3f, MOD = 1e9 + 7;</span><br><span class="line"></span><br><span class="line">typedef long long LL;</span><br><span class="line">int n, m, q[N];</span><br><span class="line">LL f[2][N]; // f[j][i]:= j段到i的最小值</span><br><span class="line">LL s[N], s2[N]; //sum, square sum</span><br><span class="line"></span><br><span class="line">//f[j][i] = min &#123; 2f[k] + [ (s[i] - s[k])^2 - (s2[i] - s2[k]) ] / 2 &#125;</span><br><span class="line">//slope(k, j):= &#123; (2f[j]+s[j]*s[j]+s2[j])-(2f[k]+s[k]*s[k]+s2[k]) &#125; /</span><br><span class="line">// &#123; 2(s[j] - s[k]) &#125; &lt;= s[i]</span><br><span class="line"></span><br><span class="line">LL up(int p, int k, int j) &#123;</span><br><span class="line">    return (2 * f[p][j] + s[j] * s[j] + s2[j]) -</span><br><span class="line">           (2 * f[p][k] + s[k] * s[k] + s2[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">LL dw(int k, int j) &#123;</span><br><span class="line">    return 2 * (s[j] - s[k]);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">bool check(int p, int k, int j, int i) &#123;</span><br><span class="line">    return up(p, k, j) * dw(j, i) &gt;= up(p, j, i) * dw(k, j);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">int main() &#123;</span><br><span class="line">#ifdef LOCAL</span><br><span class="line">    freopen("C:\\Users\\TaoSama\\Desktop\\in.txt", "r", stdin);</span><br><span class="line">//  freopen("C:\\Users\\TaoSama\\Desktop\\out.txt","w",stdout);</span><br><span class="line">#endif</span><br><span class="line">    ios_base::sync_with_stdio(0);</span><br><span class="line">    clock_t _ = clock();</span><br><span class="line"></span><br><span class="line">    while(scanf("%d%d", &amp;n, &amp;m) == 2 &amp;&amp; (n || m)) &#123;</span><br><span class="line">        for(int i = 1; i &lt;= n; ++i) &#123;</span><br><span class="line">            scanf("%I64d", s + i);</span><br><span class="line">            s2[i] = s2[i - 1] + s[i] * s[i];</span><br><span class="line">            s[i] += s[i - 1];</span><br><span class="line">//            printf("s[%d] = %I64d, s2[%d] = %I64d\n", i, s[i], i, s2[i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        int p = 0;</span><br><span class="line">        for(int i = 0; i &lt;= n; ++i) &#123;</span><br><span class="line">            f[p][i] = (s[i] * s[i] - s2[i]) / 2;</span><br><span class="line">//            printf("f[0][%d] = %I64d\n", i, f[p][i]);</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        for(int j = 1; j &lt;= m; ++j) &#123;</span><br><span class="line">            int L = 0, R = 0;</span><br><span class="line">            q[R++] = 0;</span><br><span class="line">            for(int i = 1; i &lt;= n; ++i) &#123;</span><br><span class="line">                while(L + 1 &lt; R &amp;&amp; up(p, q[L], q[L + 1]) &lt;= s[i] * dw(q[L], q[L + 1]))</span><br><span class="line">                    ++L;</span><br><span class="line">                int k = q[L];</span><br><span class="line">                f[!p][i] = f[p][k] + ((s[i] - s[k]) * (s[i] - s[k]) -</span><br><span class="line">                                      (s2[i] - s2[k])) / 2;</span><br><span class="line">                while(L + 1 &lt; R &amp;&amp; check(p, q[R - 2], q[R - 1], i)) --R;</span><br><span class="line">                q[R++] = i;</span><br><span class="line">            &#125;</span><br><span class="line">            p = !p;</span><br><span class="line">        &#125;</span><br><span class="line">        printf("%I64d\n", f[p][n]);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">#ifdef LOCAL</span><br><span class="line">    printf("\nTime cost: %.2fs\n", 1.0 * (clock() - _) / CLOCKS_PER_SEC);</span><br><span class="line">#endif</span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+	  
+  <div class="article-statement">
+    <hr> 
+    1. 除非注明，本博文即为原创，转载请注明链接地址 <br>
+    2. 本博文只代表博主当时的观点或结论，请不要恶意攻击 <br>
+    3. 如果本文帮到了您，不妨点一下 <a>右下角</a> 的 <a>分享到</a> 按钮，让更多的人看到 <br>
+	<!-- ，或者 <a href='/about/index.html#zan-shang'>小额赞赏</a> 我。-->
+  </div>
+
+
+
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://TaoSama.github.io/2016/05/11/HDU 2829 Lawrence（斜率优化dp）/" data-id="cio1uihtr002fk07stviqjpom" class="article-share-link" data-share="baidu" data-title="HDU 2829 Lawrence（斜率优化dp）">分享到</a>
+      
+
+      
+        <a href="http://TaoSama.github.io/2016/05/11/HDU 2829 Lawrence（斜率优化dp）/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/斜率优化/">斜率优化</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2016/05/11/Codeforces Round 351 E. Levels and Regions（斜率优化dp）/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">下一篇</strong>
+      <div class="article-nav-title">
+        
+          Codeforces Round 351 E. Levels and Regions（斜率优化dp）
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2016/05/11/斜率优化dp小结/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">斜率优化dp小结</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/05/11/HDU 2829 Lawrence（斜率优化dp）/" data-title="HDU 2829 Lawrence（斜率优化dp）" data-url="http://TaoSama.github.io/2016/05/11/HDU 2829 Lawrence（斜率优化dp）/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">推荐文章</h3>
+    <div class="widget">
+      <ul>
+        
+        
+          
+          <li>
+            <a href="http://taosama.github.io/2016/05/02/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%B0%8F%E7%BB%93/" target="_blank">1. 常见错误小结</a>
+          </li>
+        
+          
+          <li>
+            <a href="http://taosama.github.io/2016/03/09/Hello%20World%20%E2%80%94%E2%80%94%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" target="_blank">2. Hello World —— 博客搭建历程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://blog.csdn.net/lwt36/" target="_blank">我的CSDN</a>
+          </li>
+        
+          <li>
+            <a href="http://www.zhihu.com/people/ye-zhu-shui-han/" target="_blank">我的知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://weibo.com/3863360617/" target="_blank">我的微博</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/TaoSama/" target="_blank">我的GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://notdeep.github.io/" target="_blank">果姐姐</a>
+          </li>
+        
+          <li>
+            <a href="https://naiij.github.io/" target="_blank">Jiian</a>
+          </li>
+        
+          <li>
+            <a href="http://blog.findthem.cn/" target="_blank">Mathon</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/">动态规划</a><span class="category-list-count">13</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/最长上升子序列/">最长上升子序列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/概率-期望dp/">概率/期望dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/状压dp/">状压dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/矩阵优化/">矩阵优化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/线性dp/">线性dp</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/">图论</a><span class="category-list-count">19</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/图论/LCA/">LCA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/二分图/">二分图</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/拓扑排序/">拓扑排序</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最大团/">最大团</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最小生成树/">最小生成树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最短路/">最短路</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/">网络流</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/最大流/">最大流</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/连通图/">连通图</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/套题/">套题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/">字符串</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/Manacher-回文树/">Manacher/回文树</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/小结/">小结</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/">思维</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/思维/分治/">分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/离线思想/">离线思想</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/逆向思维/">逆向思维</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/">技巧</a><span class="category-list-count">12</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/two-pointers/">two pointers</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/xor/">xor</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/哈希/">哈希</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/">搜索</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/bfs/">bfs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/dfs/">dfs</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/二-三分搜索/">二/三分搜索</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数学/FFT/">FFT</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/博弈/">博弈</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/容斥/">容斥</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/概率-期望/">概率/期望</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/组合数学/">组合数学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/贡献/">贡献</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">9</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/二叉搜索树/">二叉搜索树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/动态规划/">动态规划</a><span class="category-list-count">1</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/动态规划/线性dp/">线性dp</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/并查集/">并查集</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/树状数组/">树状数组</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/线段树/">线段树</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/">暴力</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/大模拟/">大模拟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/模拟/">模拟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/签到/">签到</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/">琐事</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/面试/">面试</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/">计算几何</a><span class="category-list-count">3</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/扫描线/">扫描线</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/贪心/">贪心</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/贪心/区间贪心/">区间贪心</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BIT/" style="font-size: 20px;">BIT</a> <a href="/tags/FFT/" style="font-size: 11.67px;">FFT</a> <a href="/tags/LCA/" style="font-size: 10px;">LCA</a> <a href="/tags/LIS/" style="font-size: 10px;">LIS</a> <a href="/tags/MST/" style="font-size: 10px;">MST</a> <a href="/tags/Manacher/" style="font-size: 10px;">Manacher</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/Voronoi图/" style="font-size: 10px;">Voronoi图</a> <a href="/tags/bfs/" style="font-size: 11.67px;">bfs</a> <a href="/tags/bitset/" style="font-size: 10px;">bitset</a> <a href="/tags/dfs/" style="font-size: 11.67px;">dfs</a> <a href="/tags/dp/" style="font-size: 16.67px;">dp</a> <a href="/tags/floyd/" style="font-size: 11.67px;">floyd</a> <a href="/tags/scc/" style="font-size: 10px;">scc</a> <a href="/tags/trie上贪心/" style="font-size: 10px;">trie上贪心</a> <a href="/tags/two-pointers/" style="font-size: 11.67px;">two pointers</a> <a href="/tags/xor-trie/" style="font-size: 16.67px;">xor trie</a> <a href="/tags/三分搜索/" style="font-size: 11.67px;">三分搜索</a> <a href="/tags/二分搜索/" style="font-size: 13.33px;">二分搜索</a> <a href="/tags/二维分块/" style="font-size: 10px;">二维分块</a> <a href="/tags/五边形数/" style="font-size: 10px;">五边形数</a> <a href="/tags/分治/" style="font-size: 11.67px;">分治</a> <a href="/tags/判断矩形相交/" style="font-size: 10px;">判断矩形相交</a> <a href="/tags/区间贪心/" style="font-size: 10px;">区间贪心</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/博弈/" style="font-size: 10px;">博弈</a> <a href="/tags/可持久trie/" style="font-size: 10px;">可持久trie</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/回文树/" style="font-size: 11.67px;">回文树</a> <a href="/tags/大模拟/" style="font-size: 10px;">大模拟</a> <a href="/tags/容斥/" style="font-size: 10px;">容斥</a> <a href="/tags/小结/" style="font-size: 10px;">小结</a> <a href="/tags/并查集/" style="font-size: 11.67px;">并查集</a> <a href="/tags/异或/" style="font-size: 10px;">异或</a> <a href="/tags/思维/" style="font-size: 10px;">思维</a> <a href="/tags/扫描线/" style="font-size: 10px;">扫描线</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 15px;">拓扑排序</a> <a href="/tags/斜率优化/" style="font-size: 13.33px;">斜率优化</a> <a href="/tags/最大团/" style="font-size: 11.67px;">最大团</a> <a href="/tags/最大权匹配/" style="font-size: 10px;">最大权匹配</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小点覆盖/" style="font-size: 11.67px;">最小点覆盖</a> <a href="/tags/最小路径覆盖/" style="font-size: 10px;">最小路径覆盖</a> <a href="/tags/最短路/" style="font-size: 11.67px;">最短路</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/期望dp/" style="font-size: 10px;">期望dp</a> <a href="/tags/标记合并/" style="font-size: 10px;">标记合并</a> <a href="/tags/树上sg/" style="font-size: 10px;">树上sg</a> <a href="/tags/概率dp/" style="font-size: 11.67px;">概率dp</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/矩阵快速幂/" style="font-size: 10px;">矩阵快速幂</a> <a href="/tags/离线/" style="font-size: 20px;">离线</a> <a href="/tags/约瑟夫环/" style="font-size: 10px;">约瑟夫环</a> <a href="/tags/线性dp/" style="font-size: 11.67px;">线性dp</a> <a href="/tags/线段树/" style="font-size: 13.33px;">线段树</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/贡献/" style="font-size: 10px;">贡献</a> <a href="/tags/贪心/" style="font-size: 18.33px;">贪心</a> <a href="/tags/边双连通/" style="font-size: 11.67px;">边双连通</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/逆元/" style="font-size: 10px;">逆元</a> <a href="/tags/逆序数/" style="font-size: 10px;">逆序数</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">22</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">2016年 04月</a><span class="archive-list-count">41</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">2016年 03月</a><span class="archive-list-count">42</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近评论</h3>
+    <div class="widget">
+      <!-- 多说最新评论 start -->
+      <div class="ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+      <!-- 多说最新评论 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name:"Taos"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共JS代码 end -->
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> TaoSama </a> <br>
+      Powered by <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/TaoSama/landscape-plus" target="_blank">landscape-plus</a>
+	  &nbsp;|&nbsp;
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Taos"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '/js/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
