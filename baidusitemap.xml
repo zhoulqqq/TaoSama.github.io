@@ -4,6 +4,26 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/05/11/%E6%96%9C%E7%8E%87%E4%BC%98%E5%8C%96dp%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-05-10T18:37:32.164Z</lastmod>
+    <data>
+        <display>
+        <title>斜率优化dp小结</title>
+        <pubTime>2016-05-10T16:52:10.000Z</pubTime>
+        
+        <tag>斜率优化</tag>
+         
+         
+           
+             
+              <breadCrumb title="小结" url="http://TaoSama.github.io/categories/%E5%B0%8F%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/05/09/HDU%205375%20Gray%20code%EF%BC%88%E7%BA%BF%E6%80%A7dp%EF%BC%89/</loc>
     <lastmod>2016-05-09T08:49:10.667Z</lastmod>
     <data>
@@ -911,9 +931,9 @@
         <title>HDU 5658 CA Loves Palindromic（Manacher | 回文树）</title>
         <pubTime>2016-04-10T18:03:10.000Z</pubTime>
         
-        <tag>回文树</tag>
-         
         <tag>Manacher</tag>
+         
+        <tag>回文树</tag>
          
          
            
