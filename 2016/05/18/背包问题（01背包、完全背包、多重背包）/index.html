@@ -22,7 +22,7 @@ $背包问题：将物品装入V大小的背包获得最优价值的问题$
 $c_i=1时，称为01背包$
 $c_i=\infty 时，称为完全背包$
 $c_i=不定值时，称为多重背包$">
-<meta property="og:updated_time" content="2016-05-18T16:57:57.952Z">
+<meta property="og:updated_time" content="2016-05-18T17:08:14.845Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="背包问题（01背包、完全背包、多重背包）">
 <meta name="twitter:description" content="Ⅰ. 背包问题认知
@@ -146,7 +146,7 @@ $c_i=不定值时，称为多重背包$">
 <li>$先看O(NVK)的转移方程：f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$</li>
 <li>$首先j\%w_i不同的状态间是独立的，即f[i][p\times w_i+r]肯定是由f[i-1][q\times w_i + r]转移过来的$</li>
 <li>$我们来推一推，令j=p\times w_i +r$</li>
-<li>$f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$<br>$f[i][p\times w_i +r] = max\{f[i-1][(p-k)\times w_i + r]+k\times v_i\},\ k\in [0,\ c_i]$<br>$令q=p-k，得f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]+(p-q)\times v_i\},\ q\in [p-c_i,\ p]$<br>$按照w_i分类后p是定值，f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$<br>$令f(x)=x\times w_i + r,\ 则原式=$<br>$f(p)=max\{f(q)-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$</li>
+<li>$f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$<br>$f[i][p\times w_i +r] = max\{f[i-1][(p-k)\times w_i + r]+k\times v_i\},\ k\in [0,\ c_i]$<br>$令q=p-k，得:$<br>$f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]+(p-q)\times v_i\},\ q\in [p-c_i,\ p]$<br>$按照w_i分类后p是定值，得:$<br>$f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$<br>$令f(x)=x\times w_i + r，得:$<br>$f(p)=max\{f(q)-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$</li>
 <li>$这个就是我们熟悉的窗口大小为c_i的单调队列优化的式子辣$</li>
 <li>$单调队列优化搞一波，时间复杂度即为O(NV)$</li>
 </ul>
@@ -166,7 +166,7 @@ $c_i=不定值时，称为多重背包$">
     </div>
     <footer class="article-footer">
       
-        <a data-url="http://TaoSama.github.io/2016/05/18/背包问题（01背包、完全背包、多重背包）/" data-id="ciod492b4009qtg7s35a62qhf" class="article-share-link" data-share="baidu" data-title="背包问题（01背包、完全背包、多重背包）">分享到</a>
+        <a data-url="http://TaoSama.github.io/2016/05/18/背包问题（01背包、完全背包、多重背包）/" data-id="ciod4h23k00h2y47szpa3r5rr" class="article-share-link" data-share="baidu" data-title="背包问题（01背包、完全背包、多重背包）">分享到</a>
       
 
       

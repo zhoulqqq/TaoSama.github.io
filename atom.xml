@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TaoSama.github.io/"/>
-  <updated>2016-05-18T16:57:57.952Z</updated>
+  <updated>2016-05-18T17:08:14.845Z</updated>
   <id>http://TaoSama.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://TaoSama.github.io/2016/05/18/%E8%83%8C%E5%8C%85%E9%97%AE%E9%A2%98%EF%BC%8801%E8%83%8C%E5%8C%85%E3%80%81%E5%AE%8C%E5%85%A8%E8%83%8C%E5%8C%85%E3%80%81%E5%A4%9A%E9%87%8D%E8%83%8C%E5%8C%85%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/05/18/背包问题（01背包、完全背包、多重背包）/</id>
     <published>2016-05-18T14:39:10.000Z</published>
-    <updated>2016-05-18T16:57:57.952Z</updated>
+    <updated>2016-05-18T17:08:14.845Z</updated>
     
     <content type="html">&lt;h2 id=&quot;Ⅰ-背包问题认知&quot;&gt;&lt;a href=&quot;#Ⅰ-背包问题认知&quot; class=&quot;headerlink&quot; title=&quot;Ⅰ. 背包问题认知&quot;&gt;&lt;/a&gt;Ⅰ. 背包问题认知&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;$物品：不可拆分，具有三种属性(体积w_i,\ 价值v_i,\ 个数c_i)$&lt;/li&gt;
@@ -58,7 +58,7 @@
 &lt;li&gt;$先看O(NVK)的转移方程：f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$&lt;/li&gt;
 &lt;li&gt;$首先j\%w_i不同的状态间是独立的，即f[i][p\times w_i+r]肯定是由f[i-1][q\times w_i + r]转移过来的$&lt;/li&gt;
 &lt;li&gt;$我们来推一推，令j=p\times w_i +r$&lt;/li&gt;
-&lt;li&gt;$f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$&lt;br&gt;$f[i][p\times w_i +r] = max\{f[i-1][(p-k)\times w_i + r]+k\times v_i\},\ k\in [0,\ c_i]$&lt;br&gt;$令q=p-k，得f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]+(p-q)\times v_i\},\ q\in [p-c_i,\ p]$&lt;br&gt;$按照w_i分类后p是定值，f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$&lt;br&gt;$令f(x)=x\times w_i + r,\ 则原式=$&lt;br&gt;$f(p)=max\{f(q)-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$&lt;/li&gt;
+&lt;li&gt;$f[i][j] = max\{f[i-1][j-k\times w_i]+k\times v_i\},\ k\in [0,\ c_i]$&lt;br&gt;$f[i][p\times w_i +r] = max\{f[i-1][(p-k)\times w_i + r]+k\times v_i\},\ k\in [0,\ c_i]$&lt;br&gt;$令q=p-k，得:$&lt;br&gt;$f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]+(p-q)\times v_i\},\ q\in [p-c_i,\ p]$&lt;br&gt;$按照w_i分类后p是定值，得:$&lt;br&gt;$f[i][p\times w_i +r] = max\{f[i-1][q\times w_i + r]-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$&lt;br&gt;$令f(x)=x\times w_i + r，得:$&lt;br&gt;$f(p)=max\{f(q)-q\times v_i\}+p\times v_i,\ q\in [p-c_i,\ p]$&lt;/li&gt;
 &lt;li&gt;$这个就是我们熟悉的窗口大小为c_i的单调队列优化的式子辣$&lt;/li&gt;
 &lt;li&gt;$单调队列优化搞一波，时间复杂度即为O(NV)$&lt;/li&gt;
 &lt;/ul&gt;
@@ -508,32 +508,6 @@
   </entry>
   
   <entry>
-    <title>常见错误小结</title>
-    <link href="http://TaoSama.github.io/2016/05/02/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%B0%8F%E7%BB%93/"/>
-    <id>http://TaoSama.github.io/2016/05/02/常见错误小结/</id>
-    <published>2016-05-02T15:56:10.000Z</published>
-    <updated>2016-05-11T09:52:08.064Z</updated>
-    
-    <content type="html">&lt;blockquote&gt;
-&lt;p&gt;$1. 递归时隐藏的修改了全局变量例如点分治重心$&lt;font color=&quot;red&quot;&gt; $\to 每次复制一遍$&lt;/font&gt;&lt;br&gt;$2. 测试数据时未将空间开到题目要求, 隐藏的空间倍数关系例如无向图2倍$&lt;font color=&quot;red&quot;&gt; $\to RE$&lt;/font&gt;&lt;br&gt;$3. 除数是个减法式子$&lt;font color=&quot;red&quot;&gt; $整数\to RE\ \ \ 浮点数\to WA\ \ \ \to 特判$&lt;/font&gt;&lt;br&gt;$4. 离线并查集的重复操作$&lt;font color=&quot;red&quot;&gt; $\to 只有第一次才需要unite$&lt;/font&gt;&lt;br&gt;$5. 回溯暴搜的复杂度是阶乘级或者指数级$&lt;font color=&quot;red&quot;&gt; $\to 看到正常数据的题再爆搜就可以去死了$&lt;/font&gt;&lt;br&gt;$6. 乘法取模, a \times b$&lt;font color=&quot;red&quot;&gt; $\to a \% MOD \times (b\%MOD)\%MOD $&lt;/font&gt;&lt;br&gt;$7. two\ pointers的时候，相等时移动指针$&lt;font color=&quot;red&quot;&gt; $\to 小心重复数据，死循环死你啊$&lt;/font&gt;&lt;br&gt;$8. 利用欧拉定理降幂的时候x^n\%\ MOD，特判x\% MOD == 0$&lt;font color=&quot;red&quot;&gt; $\to 此时答案是0啊$&lt;/font&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
-&lt;/blockquote&gt;
-</content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;$1. 递归时隐藏的修改了全局变量例如点分治重心$&lt;font color = red&gt; $\to 每次复制一遍$&lt;/font&gt;&lt;br&gt;$2. 测试数据时未将空间开到题目要求, 隐藏的空间倍数关系例如无向图2倍$&lt;font color = red&gt; $\to RE$&lt;/font&gt;&lt;br&gt;$3. 除数是个减法式子$&lt;font color = red&gt; $整数\to RE\ \ \ 浮点数\to WA\ \ \ \to 特判$&lt;/font&gt;&lt;br&gt;$4. 离线并查集的重复操作$&lt;font color = red&gt; $\to 只有第一次才需要unite$&lt;/font&gt;&lt;br&gt;$5. 回溯暴搜的复杂度是阶乘级或者指数级$&lt;font color = red&gt; $\to 看到正常数据的题再爆搜就可以去死了$&lt;/font&gt;&lt;br&gt;$6. 乘法取模, a \times b$&lt;font color = red&gt; $\to a \% MOD \times (b\%MOD)\%MOD $&lt;/font&gt;&lt;br&gt;$7. two\ pointers的时候，相等时移动指针$&lt;font color = red&gt; $\to 小心重复数据，死循环死你啊$&lt;/font&gt;&lt;br&gt;$8. 利用欧拉定理降幂的时候x^n\%\ MOD，特判x\% MOD == 0$&lt;font color = red&gt; $\to 此时答案是0啊$&lt;/font&gt;&lt;br&gt;
-    
-    </summary>
-    
-      <category term="小结" scheme="http://TaoSama.github.io/categories/%E5%B0%8F%E7%BB%93/"/>
-    
-    
-      <category term="小结" scheme="http://TaoSama.github.io/tags/%E5%B0%8F%E7%BB%93/"/>
-    
-  </entry>
-  
-  <entry>
     <title>HDU 4122 Alice&#39;s mooncake shop（贪心、RMQ）</title>
     <link href="http://TaoSama.github.io/2016/05/02/HDU%204122%20Alice's%20mooncake%20shop%EF%BC%88%E8%B4%AA%E5%BF%83%E3%80%81RMQ%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/05/02/HDU 4122 Alice's mooncake shop（贪心、RMQ）/</id>
@@ -563,6 +537,32 @@
     
     
       <category term="RMQ" scheme="http://TaoSama.github.io/tags/RMQ/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>常见错误小结</title>
+    <link href="http://TaoSama.github.io/2016/05/02/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%B0%8F%E7%BB%93/"/>
+    <id>http://TaoSama.github.io/2016/05/02/常见错误小结/</id>
+    <published>2016-05-02T15:56:10.000Z</published>
+    <updated>2016-05-11T09:52:08.064Z</updated>
+    
+    <content type="html">&lt;blockquote&gt;
+&lt;p&gt;$1. 递归时隐藏的修改了全局变量例如点分治重心$&lt;font color=&quot;red&quot;&gt; $\to 每次复制一遍$&lt;/font&gt;&lt;br&gt;$2. 测试数据时未将空间开到题目要求, 隐藏的空间倍数关系例如无向图2倍$&lt;font color=&quot;red&quot;&gt; $\to RE$&lt;/font&gt;&lt;br&gt;$3. 除数是个减法式子$&lt;font color=&quot;red&quot;&gt; $整数\to RE\ \ \ 浮点数\to WA\ \ \ \to 特判$&lt;/font&gt;&lt;br&gt;$4. 离线并查集的重复操作$&lt;font color=&quot;red&quot;&gt; $\to 只有第一次才需要unite$&lt;/font&gt;&lt;br&gt;$5. 回溯暴搜的复杂度是阶乘级或者指数级$&lt;font color=&quot;red&quot;&gt; $\to 看到正常数据的题再爆搜就可以去死了$&lt;/font&gt;&lt;br&gt;$6. 乘法取模, a \times b$&lt;font color=&quot;red&quot;&gt; $\to a \% MOD \times (b\%MOD)\%MOD $&lt;/font&gt;&lt;br&gt;$7. two\ pointers的时候，相等时移动指针$&lt;font color=&quot;red&quot;&gt; $\to 小心重复数据，死循环死你啊$&lt;/font&gt;&lt;br&gt;$8. 利用欧拉定理降幂的时候x^n\%\ MOD，特判x\% MOD == 0$&lt;font color=&quot;red&quot;&gt; $\to 此时答案是0啊$&lt;/font&gt;&lt;br&gt;&lt;a id=&quot;more&quot;&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+</content>
+    
+    <summary type="html">
+    
+      &lt;blockquote&gt;
+&lt;p&gt;$1. 递归时隐藏的修改了全局变量例如点分治重心$&lt;font color = red&gt; $\to 每次复制一遍$&lt;/font&gt;&lt;br&gt;$2. 测试数据时未将空间开到题目要求, 隐藏的空间倍数关系例如无向图2倍$&lt;font color = red&gt; $\to RE$&lt;/font&gt;&lt;br&gt;$3. 除数是个减法式子$&lt;font color = red&gt; $整数\to RE\ \ \ 浮点数\to WA\ \ \ \to 特判$&lt;/font&gt;&lt;br&gt;$4. 离线并查集的重复操作$&lt;font color = red&gt; $\to 只有第一次才需要unite$&lt;/font&gt;&lt;br&gt;$5. 回溯暴搜的复杂度是阶乘级或者指数级$&lt;font color = red&gt; $\to 看到正常数据的题再爆搜就可以去死了$&lt;/font&gt;&lt;br&gt;$6. 乘法取模, a \times b$&lt;font color = red&gt; $\to a \% MOD \times (b\%MOD)\%MOD $&lt;/font&gt;&lt;br&gt;$7. two\ pointers的时候，相等时移动指针$&lt;font color = red&gt; $\to 小心重复数据，死循环死你啊$&lt;/font&gt;&lt;br&gt;$8. 利用欧拉定理降幂的时候x^n\%\ MOD，特判x\% MOD == 0$&lt;font color = red&gt; $\to 此时答案是0啊$&lt;/font&gt;&lt;br&gt;
+    
+    </summary>
+    
+      <category term="小结" scheme="http://TaoSama.github.io/categories/%E5%B0%8F%E7%BB%93/"/>
+    
+    
+      <category term="小结" scheme="http://TaoSama.github.io/tags/%E5%B0%8F%E7%BB%93/"/>
     
   </entry>
   
