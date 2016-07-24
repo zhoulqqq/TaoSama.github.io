@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TaoSama.github.io/"/>
-  <updated>2016-07-24T15:22:02.245Z</updated>
+  <updated>2016-07-24T15:27:59.522Z</updated>
   <id>http://TaoSama.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://TaoSama.github.io/2016/07/24/51nod%201532%20%E5%B8%A6%E5%8F%AF%E9%80%89%E5%AD%97%E7%AC%A6%E7%9A%84%E5%A4%9A%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8C%B9%E9%85%8D%EF%BC%88dp%E3%80%81bitset%E4%BC%98%E5%8C%96%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/07/24/51nod 1532 带可选字符的多字符串匹配（dp、bitset优化）/</id>
     <published>2016-07-24T15:14:10.000Z</published>
-    <updated>2016-07-24T15:22:02.245Z</updated>
+    <updated>2016-07-24T15:27:59.522Z</updated>
     
     <content type="html">&lt;p&gt;题意：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -43,9 +43,9 @@
     
     </summary>
     
-      <category term="dp" scheme="http://TaoSama.github.io/categories/dp/"/>
+      <category term="动态规划" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
-      <category term="bitset优化" scheme="http://TaoSama.github.io/categories/dp/bitset%E4%BC%98%E5%8C%96/"/>
+      <category term="bitset优化" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/bitset%E4%BC%98%E5%8C%96/"/>
     
     
       <category term="bitset" scheme="http://TaoSama.github.io/tags/bitset/"/>
@@ -57,7 +57,7 @@
     <link href="http://TaoSama.github.io/2016/07/24/HDU%205745%20La%20Vie%20en%20rose%EF%BC%88dp%E3%80%81bitset%E4%BC%98%E5%8C%96%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/07/24/HDU 5745 La Vie en rose（dp、bitset优化）/</id>
     <published>2016-07-24T15:01:10.000Z</published>
-    <updated>2016-07-24T15:12:42.931Z</updated>
+    <updated>2016-07-24T15:27:55.721Z</updated>
     
     <content type="html">&lt;p&gt;题意：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -80,9 +80,9 @@
     
     </summary>
     
-      <category term="dp" scheme="http://TaoSama.github.io/categories/dp/"/>
+      <category term="动态规划" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
-      <category term="bitset优化" scheme="http://TaoSama.github.io/categories/dp/bitset%E4%BC%98%E5%8C%96/"/>
+      <category term="bitset优化" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/bitset%E4%BC%98%E5%8C%96/"/>
     
     
       <category term="bitset" scheme="http://TaoSama.github.io/tags/bitset/"/>
@@ -248,7 +248,7 @@
     <link href="http://TaoSama.github.io/2016/07/24/HDU%205730%20Shell%20Necklace%EF%BC%88dp%E3%80%81cdq%E5%88%86%E6%B2%BB+FFT%EF%BC%89/"/>
     <id>http://TaoSama.github.io/2016/07/24/HDU 5730 Shell Necklace（dp、cdq分治+FFT）/</id>
     <published>2016-07-24T13:32:10.000Z</published>
-    <updated>2016-07-24T13:45:24.682Z</updated>
+    <updated>2016-07-24T15:28:01.181Z</updated>
     
     <content type="html">&lt;p&gt;题意：&lt;/p&gt;
 &lt;blockquote&gt;
@@ -271,9 +271,9 @@
     
     </summary>
     
-      <category term="dp" scheme="http://TaoSama.github.io/categories/dp/"/>
+      <category term="动态规划" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
     
-      <category term="卷积优化" scheme="http://TaoSama.github.io/categories/dp/%E5%8D%B7%E7%A7%AF%E4%BC%98%E5%8C%96/"/>
+      <category term="卷积优化" scheme="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E5%8D%B7%E7%A7%AF%E4%BC%98%E5%8C%96/"/>
     
     
       <category term="FFT" scheme="http://TaoSama.github.io/tags/FFT/"/>
