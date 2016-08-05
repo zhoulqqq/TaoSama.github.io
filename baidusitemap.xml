@@ -5,7 +5,7 @@
     
   <url>
     <loc>http://TaoSama.github.io/2016/08/05/HDU%205769%20Substring%EF%BC%88%E5%90%8E%E7%BC%80%E6%95%B0%E7%BB%84%EF%BC%89/</loc>
-    <lastmod>2016-08-05T11:40:19.686Z</lastmod>
+    <lastmod>2016-08-05T15:55:52.278Z</lastmod>
     <data>
         <display>
         <title>HDU 5769 Substring（后缀数组）</title>
@@ -19,7 +19,30 @@
               <breadCrumb title="字符串" url="http://TaoSama.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/"/>
           
              
-              <breadCrumb title="sa/sam" url="http://TaoSama.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/sa-sam/"/>
+              <breadCrumb title="SA/SAM" url="http://TaoSama.github.io/categories/%E5%AD%97%E7%AC%A6%E4%B8%B2/SA-SAM/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/08/05/HDU%205755%20Gambler%20Bo%EF%BC%88%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%EF%BC%89/</loc>
+    <lastmod>2016-08-05T12:14:45.896Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5755 Gambler Bo（高斯消元）</title>
+        <pubTime>2016-08-05T12:10:10.000Z</pubTime>
+        
+        <tag>高斯消元</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="高斯消元" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
           
         </display>
     </data>
