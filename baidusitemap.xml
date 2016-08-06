@@ -4,6 +4,97 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/08/06/HDU%203364%20Lanterns%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%EF%BC%89/</loc>
+    <lastmod>2016-08-06T09:45:35.724Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 3364 Lanterns（线性基）</title>
+        <pubTime>2016-08-06T09:39:10.000Z</pubTime>
+        
+        <tag>高斯消元</tag>
+         
+        <tag>线性基</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="高斯消元" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/08/06/HDU%203949%20XOR%EF%BC%88%E7%BA%BF%E6%80%A7%E5%9F%BA%E3%80%81kth%E5%BC%82%E6%88%96%E5%92%8C%EF%BC%89/</loc>
+    <lastmod>2016-08-06T08:59:56.371Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 3949 XOR（线性基、kth异或和）</title>
+        <pubTime>2016-08-06T08:04:10.000Z</pubTime>
+        
+        <tag>线性基</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="高斯消元" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/08/06/HDU%204418%20Time%20travel%EF%BC%88%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E8%A7%A3%E6%9C%9F%E6%9C%9Bdp%EF%BC%89/</loc>
+    <lastmod>2016-08-06T08:27:59.942Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 4418 Time travel（高斯消元解期望dp）</title>
+        <pubTime>2016-08-06T08:14:10.000Z</pubTime>
+        
+        <tag>期望dp</tag>
+         
+        <tag>高斯消元</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="高斯消元" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/08/05/%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%E5%B0%8F%E7%BB%93/</loc>
+    <lastmod>2016-08-06T07:57:55.090Z</lastmod>
+    <data>
+        <display>
+        <title>高斯消元小结</title>
+        <pubTime>2016-08-05T12:18:10.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="小结" url="http://TaoSama.github.io/categories/%E5%B0%8F%E7%BB%93/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/08/05/HDU%205755%20Gambler%20Bo%EF%BC%88%E9%AB%98%E6%96%AF%E6%B6%88%E5%85%83%EF%BC%89/</loc>
     <lastmod>2016-08-05T16:00:50.868Z</lastmod>
     <data>
