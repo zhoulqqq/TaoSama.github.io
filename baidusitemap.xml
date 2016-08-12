@@ -4,6 +4,52 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2016/08/08/HDU%205803%20Zhu%E2%80%99s%20Math%20Problem%EF%BC%88%E6%95%B0%E4%BD%8Ddp%EF%BC%89/</loc>
+    <lastmod>2016-08-12T13:02:22.392Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5803 Zhu’s Math Problem（数位dp）</title>
+        <pubTime>2016-08-08T13:00:10.000Z</pubTime>
+        
+        <tag>数位dp</tag>
+         
+         
+           
+             
+              <breadCrumb title="动态规划" url="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/"/>
+          
+             
+              <breadCrumb title="数位dp" url="http://TaoSama.github.io/categories/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/%E6%95%B0%E4%BD%8Ddp/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/08/12/HDU%205829%20Rikka%20with%20Subset%20%EF%BC%88NTT%EF%BC%89/</loc>
+    <lastmod>2016-08-12T12:45:53.510Z</lastmod>
+    <data>
+        <display>
+        <title>HDU 5829 Rikka with Subset （NTT）</title>
+        <pubTime>2016-08-12T10:56:10.000Z</pubTime>
+        
+        <tag>NTT</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="FFT/NTT" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/FFT-NTT/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2016/08/10/HDU%205812%20Distance%EF%BC%88%E6%95%B0%E5%AD%A6%E3%80%81%E7%BA%A6%E6%95%B0%E6%9E%9A%E4%B8%BE%EF%BC%89/</loc>
     <lastmod>2016-08-12T12:12:57.968Z</lastmod>
     <data>
@@ -63,29 +109,6 @@
           
              
               <breadCrumb title="拓扑排序" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/%E6%8B%93%E6%89%91%E6%8E%92%E5%BA%8F/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://TaoSama.github.io/2016/08/12/HDU%205829%20Rikka%20with%20Subset%20%EF%BC%88NTT%EF%BC%89/</loc>
-    <lastmod>2016-08-12T11:29:15.916Z</lastmod>
-    <data>
-        <display>
-        <title>HDU 5829 Rikka with Subset （NTT）</title>
-        <pubTime>2016-08-12T10:56:10.000Z</pubTime>
-        
-        <tag>NTT</tag>
-         
-         
-           
-             
-              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-          
-             
-              <breadCrumb title="FFT/NTT" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/FFT-NTT/"/>
           
         </display>
     </data>
