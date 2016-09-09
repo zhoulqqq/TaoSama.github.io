@@ -1,0 +1,479 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>FWT小结 | TaoSama&#39;s Microcosm</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Ⅰ. 快速沃尔什变换认知
+这东西英文名叫$Fast\ Walsh$-$Hadamard\ Transform$
+$FWT$是用来快速计算位运算卷积的，至于什么是卷积，可以先学习一下$FFT$
+FFT小结，点击链接
+既然提到了位运算，必然要和子集扯上关系，也就是说可以来求子集卷积">
+<meta property="og:type" content="article">
+<meta property="og:title" content="FWT小结">
+<meta property="og:url" content="http://TaoSama.github.io/2016/09/10/FWT小结/index.html">
+<meta property="og:site_name" content="TaoSama's Microcosm">
+<meta property="og:description" content="Ⅰ. 快速沃尔什变换认知
+这东西英文名叫$Fast\ Walsh$-$Hadamard\ Transform$
+$FWT$是用来快速计算位运算卷积的，至于什么是卷积，可以先学习一下$FFT$
+FFT小结，点击链接
+既然提到了位运算，必然要和子集扯上关系，也就是说可以来求子集卷积">
+<meta property="og:updated_time" content="2016-09-09T18:08:08.373Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="FWT小结">
+<meta name="twitter:description" content="Ⅰ. 快速沃尔什变换认知
+这东西英文名叫$Fast\ Walsh$-$Hadamard\ Transform$
+$FWT$是用来快速计算位运算卷积的，至于什么是卷积，可以先学习一下$FFT$
+FFT小结，点击链接
+既然提到了位运算，必然要和子集扯上关系，也就是说可以来求子集卷积">
+  
+    <link rel="alternative" href="/atom.xml" title="TaoSama&#39;s Microcosm" type="application/atom+xml">
+  
+  
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <link href="//fonts.lug.ustc.edu.cn/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  <!--[if lt IE 9]><script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.min.js"></script><![endif]-->
+  
+</head>
+<body>
+<div id="container">
+  <div id="wrap">
+    <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">TaoSama&#39;s Microcosm</a>
+      </h1>
+      
+        <h2 id="subtitle-wrap">
+          <a href="/" id="subtitle">Fighting for the Last Season</a>
+        </h2>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">首页</a>
+        
+          <a class="main-nav-link" href="/archives">文章</a>
+        
+          <a class="main-nav-link" href="/about">关于</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+		<div id="search-form-wrap">
+		  <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" results="0" class="search-form-input" placeholder="搜索"Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://TaoSama.github.io"></form>
+		</div>
+    </div>
+  </div>
+</header>
+    <div class="outer">
+      <section id="main"><article id="post-FWT小结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2016/09/10/FWT小结/" class="article-date">
+  <time datetime="2016-09-09T16:18:10.000Z" itemprop="datePublished">2016-09-10</time>
+</a>
+    
+  <div class="article-category">
+    <a class="article-category-link" href="/categories/小结/">小结</a>
+  </div>
+
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      FWT小结
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+		<!-- Table of Contents -->
+		
+		  <div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#Ⅰ-快速沃尔什变换认知"><span class="toc-number">1.</span> <span class="toc-text">Ⅰ. 快速沃尔什变换认知</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ⅱ-快速沃尔什变换"><span class="toc-number">2.</span> <span class="toc-text">Ⅱ. 快速沃尔什变换</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#形式"><span class="toc-number">2.1.</span> <span class="toc-text">形式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#计算"><span class="toc-number">2.2.</span> <span class="toc-text">计算</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#变换"><span class="toc-number">2.2.1.</span> <span class="toc-text">变换</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#分治"><span class="toc-number">2.2.2.</span> <span class="toc-text">分治</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#三种位运算变换总结"><span class="toc-number">2.2.3.</span> <span class="toc-text">三种位运算变换总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#时间复杂度与写法"><span class="toc-number">2.3.</span> <span class="toc-text">时间复杂度与写法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Ⅲ-题目选讲"><span class="toc-number">3.</span> <span class="toc-text">Ⅲ.  题目选讲</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#IForg-1028-Bob-and-Alice-are-playing-numbers"><span class="toc-number">3.1.</span> <span class="toc-text">IForg 1028 Bob and Alice are playing numbers</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SRM-518-NIM"><span class="toc-number">3.2.</span> <span class="toc-text">SRM 518 NIM</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Reference"><span class="toc-number">4.</span> <span class="toc-text">Reference</span></a></li></ol>
+		  </div>
+			    
+        <h2 id="Ⅰ-快速沃尔什变换认知"><a href="#Ⅰ-快速沃尔什变换认知" class="headerlink" title="Ⅰ. 快速沃尔什变换认知"></a>Ⅰ. 快速沃尔什变换认知</h2><ul>
+<li>这东西英文名叫$Fast\ Walsh$-$Hadamard\ Transform$</li>
+<li>$FWT$是用来快速计算位运算卷积的，至于什么是卷积，可以先学习一下$FFT$</li>
+<li><a href="https://www.zybuluo.com/TaoSama/note/171617" target="_blank" rel="external">FFT小结，点击链接</a></li>
+<li>既然提到了位运算，必然要和子集扯上关系，也就是说可以来求子集卷积</li>
+</ul>
+<a id="more"></a>
+<h2 id="Ⅱ-快速沃尔什变换"><a href="#Ⅱ-快速沃尔什变换" class="headerlink" title="Ⅱ. 快速沃尔什变换"></a>Ⅱ. 快速沃尔什变换</h2><h3 id="形式"><a href="#形式" class="headerlink" title="形式"></a>形式</h3><ul>
+<li>类似于$FFT$的卷积形式，假设$\otimes$为卷积符号，对于$2$个等长的系数向量$\overrightarrow{a}$和$\overrightarrow{b}$</li>
+<li>对于它们的卷积$\overrightarrow{c}=\overrightarrow{a}⊗\overrightarrow{b}$，有$C_k= \displaystyle \sum_{i\otimes j=k} A_i \times B_j$</li>
+<li>其实当$\otimes$为$+$的时候，就是普通的卷积形式了</li>
+</ul>
+<h3 id="计算"><a href="#计算" class="headerlink" title="计算"></a>计算</h3><p> 假设$2$个向量长度都是$n$，那么暴力计算位运算卷积是$O(n^2)$的</p>
+<h4 id="变换"><a href="#变换" class="headerlink" title="变换"></a>变换</h4><ul>
+<li>类比$FFT$，假设我们知道一种类似于$DFT$的变换$tf$，可以使向量$X$产生一个新向量$tf(X)$</li>
+<li>以及类似于$IDFT$的变换$utf$，能使得$utf(tf(X))=X$</li>
+<li>并且变换$tf$必须具有这样的性质：$tf(X\otimes Y)=tf(X)\times tf(Y)$</li>
+</ul>
+<h4 id="分治"><a href="#分治" class="headerlink" title="分治"></a>分治</h4><ul>
+<li>类比$FFT$，我们考虑分治，接下来为了方便，我们令$\otimes$为$xor$运算，即$\oplus$</li>
+<li>令$Z=X\otimes Y$</li>
+<li>考虑$X$和$Y$都只有$1$个元素的时候，此时不需要变换，显然有$Z_{0\oplus 0=0}=X_0 \times Y_0$，即满足$tf(X)=X=utf(X)$</li>
+<li>考虑各有$2$个元素的时候，令$X=(a,\ b),\ Y=(c,\ d)$，此时$Z$<br>$Z_0=ac+bd,\ Z_1=ad+bc$，即$(a,\ b)\otimes (c,\ d)=(ac + bd,\ ad + bc)$</li>
+</ul>
+<hr>
+<ul>
+<li>令$tf(a,\ b) = (a - b,\ a + b)$<br>那么$tf(a,\ b) \times tf(c,\ d)$<br>$= (a - b,\ a + b) \times (c - d, c + d)$<br>$= ( (a-b)\times(c-d) ,\ (a+b)\times(c+d) )$<br>$= ( ac - ad - bc + bd,\ ac + ad + bc + bd )$<br>$ = ( ac + bd - ad - bc,\ ac + bd + ad + bc )$<br>$= tf( ac + bd,\ ad + bc )$<br>$ = tf( (a,b) \otimes (c,d ) )$</li>
+<li>显然我们可以发现，对于偶数长度的向量，均分成$2$个向量都满足这个性质</li>
+<li>当然也可以用数学归纳法证一波，具体去看<a href="#Reference">Reference</a>里的证明吧</li>
+<li>之后我们就可以利用这个性质来递归的变换</li>
+<li>令$X$是个偶数长度的向量，且$X=(X1,\ X2)$，$X1$和$X2$各是$X$的一半</li>
+<li>那么有$tf(X1,\ X2) = (tf(X1) - tf(X2),\ tf(X1) + tf(X2))$</li>
+<li>具体就是先递归变换$2$个等长的子序列，$X1$和$X2$都递归变换过了，<br>那么新的$X1=X1-X2$，同理新的$X2=X1+X2$</li>
+</ul>
+<hr>
+<ul>
+<li>当然逆变换$utf$也很好构造，只需要反向回去就好了，每次解一下方程</li>
+<li>令$Y1 = tf(X1) - tf(X2),\ Y2 = tf(X1) + tf(X2)$，<br>现在$Y1$和$Y2$已知，解出$tf(X1)$和$tf(X2)$即可</li>
+</ul>
+<h4 id="三种位运算变换总结"><a href="#三种位运算变换总结" class="headerlink" title="三种位运算变换总结"></a>三种位运算变换总结</h4><ul>
+<li>$tfxor(A)=(tfxor(A_0+A_1),\ tfxor(A_0−A_1))$<br>$utfxor(A)=(utfxor( (A_0+A_1)/2),\ utfxor( (A_0−A_1)/2))$</li>
+<li>$tfand(A)=(tfand(A_0+A_1),\ tfand(A_1))$<br>$utfand(A)=(utfand(A_0−A_1),\ utfand(A_1))$</li>
+<li>$tfor(A)=(tfor(A_0),\ tfor(A_1+A_0))$<br>$utfor(A)=(utfor(A_0),\ utfor(A_1−A_0))$</li>
+</ul>
+<h3 id="时间复杂度与写法"><a href="#时间复杂度与写法" class="headerlink" title="时间复杂度与写法"></a>时间复杂度与写法</h3><ul>
+<li>时间复杂度$T(n) = 2T(n/2)+O(n)$，根据主定理为$O(nlogn)$</li>
+<li>写法就跟$FFT$类似了，先把长度扩展到$2$的幂次，之后按照前面说的分治就好了</li>
+<li>具体可以参照下面的板子题</li>
+</ul>
+<h2 id="Ⅲ-题目选讲"><a href="#Ⅲ-题目选讲" class="headerlink" title="Ⅲ.  题目选讲"></a>Ⅲ.  题目选讲</h2><h3 id="IForg-1028-Bob-and-Alice-are-playing-numbers"><a href="#IForg-1028-Bob-and-Alice-are-playing-numbers" class="headerlink" title="IForg 1028 Bob and Alice are playing numbers"></a><a href="http://www.ifrog.net/acm/problem/1028" target="_blank" rel="external">IForg 1028 Bob and Alice are playing numbers</a></h3><p>分析：<br>板子题，$n$个数里选$2$个数进行三种位运算的最大值<br>数的大小只有$10^6$，$cnt[i]:=i$这个数出现了多少次<br>然后卷积一下自己，减去自己和自己的，倒着枚举找到最大的那个就做完了</p>
+<p>代码:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//  Created by TaoSama on 2016-09-09</span></span><br><span class="line"><span class="comment">//  Copyright (c) 2016 TaoSama. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">pragma</span> comment(linker, <span class="string">"/STACK:102400000,102400000"</span>)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cctype&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cmath&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstdlib&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;ctime&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iomanip&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;queue&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pr(x) cout &lt;&lt; #x &lt;&lt; <span class="string">" = "</span> &lt;&lt; x &lt;&lt; <span class="string">"  "</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> prln(x) cout &lt;&lt; #x &lt;&lt; <span class="string">" = "</span> &lt;&lt; x &lt;&lt; endl</span></span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">1e5</span> + <span class="number">10</span>, INF = <span class="number">0x3f3f3f3f</span>, MOD = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> LL;</span><br><span class="line"></span><br><span class="line"><span class="function">LL <span class="title">quick</span><span class="params">(LL x, LL n)</span> </span>&#123;</span><br><span class="line">    LL ret = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(; n; n &gt;&gt;= <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(n &amp; <span class="number">1</span>) ret = ret * x % MOD;</span><br><span class="line">        x = x * x % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> ret;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> LL invTwo = quick(<span class="number">2</span>, MOD - <span class="number">2</span>);</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwtXor</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    fwtXor(a, h);</span><br><span class="line">    fwtXor(a + h, h);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        LL x1 = a[i];</span><br><span class="line">        LL x2 = a[i + h];</span><br><span class="line">        a[i] = (x1 + x2) % MOD;</span><br><span class="line">        a[i + h] = (x1 - x2 + MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ifwtXor</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        <span class="comment">// y1=x1+x2</span></span><br><span class="line">        <span class="comment">// y2=x1-x2</span></span><br><span class="line">        LL y1 = a[i];</span><br><span class="line">        LL y2 = a[i + h];</span><br><span class="line">        a[i] = (y1 + y2) * invTwo % MOD;</span><br><span class="line">        a[i + h] = (y1 - y2 + MOD) * invTwo % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    ifwtXor(a, h);</span><br><span class="line">    ifwtXor(a + h, h);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwtAnd</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    fwtAnd(a, h);</span><br><span class="line">    fwtAnd(a + h, h);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        LL x1 = a[i];</span><br><span class="line">        LL x2 = a[i + h];</span><br><span class="line">        a[i] = (x1 + x2) % MOD;</span><br><span class="line">        a[i + h] = x2;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ifwtAnd</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        <span class="comment">// y1=x1+x2</span></span><br><span class="line">        <span class="comment">// y2=x2</span></span><br><span class="line">        LL y1 = a[i];</span><br><span class="line">        LL y2 = a[i + h];</span><br><span class="line">        a[i] = (y1 - y2 + MOD) % MOD;</span><br><span class="line">        a[i + h] = y2;</span><br><span class="line">    &#125;</span><br><span class="line">    ifwtAnd(a, h);</span><br><span class="line">    ifwtAnd(a + h, h);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">fwtOr</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    fwtOr(a, h);</span><br><span class="line">    fwtOr(a + h, h);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        LL x1 = a[i];</span><br><span class="line">        LL x2 = a[i + h];</span><br><span class="line">        a[i] = x1;</span><br><span class="line">        a[i + h] = (x2 + x1) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">ifwtOr</span><span class="params">(LL* a, <span class="keyword">int</span> len)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(len == <span class="number">1</span>) <span class="keyword">return</span>;</span><br><span class="line">    <span class="keyword">int</span> h = len &gt;&gt; <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; h; ++i) &#123;</span><br><span class="line">        <span class="comment">// y1=x1</span></span><br><span class="line">        <span class="comment">// y2=x2+x1</span></span><br><span class="line">        LL y1 = a[i];</span><br><span class="line">        LL y2 = a[i + h];</span><br><span class="line">        a[i] = y1;</span><br><span class="line">        a[i + h] = (y2 - y1 + MOD) % MOD;</span><br><span class="line">    &#125;</span><br><span class="line">    ifwtOr(a, h);</span><br><span class="line">    ifwtOr(a + h, h);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">int</span> n, op;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> C = <span class="number">1</span> &lt;&lt; <span class="number">20</span>;</span><br><span class="line">LL a[N], cnt[C + <span class="number">10</span>];</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gao</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = C; ~i; --i) <span class="keyword">if</span>(cnt[i]) <span class="keyword">return</span> i;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">ifdef</span> LOCAL</span></span><br><span class="line">    freopen(<span class="string">"C:\\Users\\TaoSama\\Desktop\\in.txt"</span>, <span class="string">"r"</span>, <span class="built_in">stdin</span>);</span><br><span class="line"><span class="comment">//  freopen("C:\\Users\\TaoSama\\Desktop\\out.txt","w",stdout);</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">endif</span></span></span><br><span class="line">    ios_base::sync_with_stdio(<span class="number">0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">int</span> t; <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;t);</span><br><span class="line">    <span class="keyword">while</span>(t--) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d%d"</span>, &amp;n, &amp;op);</span><br><span class="line">        <span class="built_in">memset</span>(cnt, <span class="number">0</span>, <span class="keyword">sizeof</span> cnt);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lld"</span>, a + i);</span><br><span class="line">            ++cnt[a[i]];</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">static</span> <span class="keyword">int</span> kase = <span class="number">0</span>;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"Case #%d: "</span>, ++kase);</span><br><span class="line">        <span class="keyword">if</span>(op == <span class="number">1</span>) &#123;</span><br><span class="line">            fwtAnd(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) cnt[i] = cnt[i] * cnt[i] % MOD;</span><br><span class="line">            ifwtAnd(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) --cnt[a[i] &amp; a[i]];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, gao());</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span>(op == <span class="number">2</span>) &#123;</span><br><span class="line">            fwtXor(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) cnt[i] = cnt[i] * cnt[i] % MOD;</span><br><span class="line">            ifwtXor(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) --cnt[a[i] ^ a[i]];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, gao());</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            fwtOr(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; C; ++i) cnt[i] = cnt[i] * cnt[i] % MOD;</span><br><span class="line">            ifwtOr(cnt, C);</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) --cnt[a[i] | a[i]];</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d\n"</span>, gao());</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h3 id="SRM-518-NIM"><a href="#SRM-518-NIM" class="headerlink" title="SRM 518 NIM"></a>SRM 518 NIM</h3><p>题意:<br>$2$个人玩$nim$游戏，能选$K\le 10^9$堆，每堆必须是素数$p_i\le L\le 10^6$，后手赢的方案数</p>
+<p>分析:<br>$nim$游戏，由$SG$定理知，先手$xorsum$为$0$输，即后手赢<br>问题就变成了这个，之后就可以$dp$了，$f[i][j]:=$选$i$堆异或和为$j$的方法数<br>显然$f[1][j]$是知道的，转移是$f[i][j]=\displaystyle\sum_{x\oplus y=j} f[i-1][x] \times f[i-1][y]$<br>发现这是个$and$卷积的形式，答案就是卷积的$k$次幂，所以直接做就好了</p>
+<p>主要代码：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">fwtAnd(a, L)</span><br><span class="line">a[i] = a[i] ^ k</span><br><span class="line">ifwtAnd(a, L)</span><br><span class="line">ans = a[0]</span><br></pre></td></tr></table></figure></p>
+<h2 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h2><ul>
+<li><a href="https://apps.topcoder.com/wiki/display/tc/SRM+518" target="_blank" rel="external">SRM 518 NIM官方题解，含有证明</a></li>
+<li><a href="http://picks.logdown.com/posts/179290-fast-walsh-hadamard-transform" target="_blank" rel="external">PICKS关于FWT，构造方案</a></li>
+<li><a href="http://www.chanmefang.com/index.php/2015/11/11/fwt/" target="_blank" rel="external">板子来源参考</a></li>
+</ul>
+
+      
+	  
+  <div class="article-statement">
+    <hr> 
+    1. 除非注明，本博文即为原创，转载请注明链接地址 <br>
+    2. 本博文只代表博主当时的观点或结论，请不要恶意攻击 <br>
+    3. 如果本文帮到了您，不妨点一下 <a>右下角</a> 的 <a>分享到</a> 按钮，让更多的人看到 <br>
+	<!-- ，或者 <a href='/about/index.html#zan-shang'>小额赞赏</a> 我。-->
+  </div>
+
+
+
+    </div>
+    <footer class="article-footer">
+      
+        <a data-url="http://TaoSama.github.io/2016/09/10/FWT小结/" data-id="cisw2vuxv0039sk7so4jibtse" class="article-share-link" data-share="baidu" data-title="FWT小结">分享到</a>
+      
+
+      
+        <a href="http://TaoSama.github.io/2016/09/10/FWT小结/#ds-thread" class="article-comment-link">评论</a>
+      
+
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/08/29/POJ 2482 Stars in Your Window（扫描线、线段树）/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">上一篇</strong>
+      <div class="article-nav-title">POJ 2482 Stars in Your Window（扫描线、线段树）</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+  <section id="comments">
+    <div id="ds-thread" class="ds-thread" data-thread-key="2016/09/10/FWT小结/" data-title="FWT小结" data-url="http://TaoSama.github.io/2016/09/10/FWT小结/"></div>
+  </section>
+</section>
+      
+      <aside id="sidebar">
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">推荐文章</h3>
+    <div class="widget">
+      <ul>
+        
+        
+          
+          <li>
+            <a href="http://taosama.github.io/2016/05/02/%E5%B8%B8%E8%A7%81%E9%94%99%E8%AF%AF%E5%B0%8F%E7%BB%93/" target="_blank">1. 常见错误小结</a>
+          </li>
+        
+          
+          <li>
+            <a href="http://taosama.github.io/2016/03/09/Hello%20World%20%E2%80%94%E2%80%94%20%E5%8D%9A%E5%AE%A2%E6%90%AD%E5%BB%BA%E5%8E%86%E7%A8%8B/" target="_blank">2. Hello World —— 博客搭建历程</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">友情链接</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="http://blog.csdn.net/lwt36/" target="_blank">我的CSDN</a>
+          </li>
+        
+          <li>
+            <a href="http://www.zhihu.com/people/ye-zhu-shui-han/" target="_blank">我的知乎</a>
+          </li>
+        
+          <li>
+            <a href="http://weibo.com/3863360617/" target="_blank">我的微博</a>
+          </li>
+        
+          <li>
+            <a href="https://github.com/TaoSama/" target="_blank">我的GitHub</a>
+          </li>
+        
+          <li>
+            <a href="http://notdeep.github.io/" target="_blank">果姐姐</a>
+          </li>
+        
+          <li>
+            <a href="https://naiij.github.io/" target="_blank">Jiian</a>
+          </li>
+        
+          <li>
+            <a href="http://luoxinchen.me/" target="_blank">Mathon</a>
+          </li>
+        
+          <li>
+            <a href="http://wuerli.me/" target="_blank">尔立</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/">动态规划</a><span class="category-list-count">26</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/bitset优化/">bitset优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/数位dp/">数位dp</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/数据结构优化/">数据结构优化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/斜率优化/">斜率优化</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/最长上升子序列/">最长上升子序列</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/树形dp/">树形dp</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/概率-期望dp/">概率/期望dp</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/状压dp/">状压dp</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/矩阵优化/">矩阵优化</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/动态规划/线性dp/">线性dp</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/">图论</a><span class="category-list-count">25</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/图论/LCA/">LCA</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/二分图/">二分图</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/拓扑排序/">拓扑排序</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最大团/">最大团</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最小生成树/">最小生成树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/最短路/">最短路</a><span class="category-list-count">5</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/">网络流</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/最大流/">最大流</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/最小割/">最小割</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/网络流/费用流/">费用流</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/图论/连通图/">连通图</a><span class="category-list-count">6</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/套题/">套题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/">字符串</a><span class="category-list-count">4</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/Manacher-回文树/">Manacher/回文树</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/字符串/SA-SAM/">SA/SAM</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/小结/">小结</a><span class="category-list-count">6</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/">思维</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/思维/分治/">分治</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/扫描线/">扫描线</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/数形结合/">数形结合</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/离线思想/">离线思想</a><span class="category-list-count">8</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/思维/逆向思维/">逆向思维</a><span class="category-list-count">2</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/">技巧</a><span class="category-list-count">17</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/two-pointers/">two pointers</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/xor/">xor</a><span class="category-list-count">9</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/反转问题/">反转问题</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/哈希/">哈希</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/技巧/折半搜索/">折半搜索</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/">搜索</a><span class="category-list-count">8</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/bfs/">bfs</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/dfs/">dfs</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/搜索/二-三分搜索/">二/三分搜索</a><span class="category-list-count">3</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/">数学</a><span class="category-list-count">21</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数学/CRT/">CRT</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/FFT-NTT/">FFT/NTT</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/博弈/">博弈</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/容斥/">容斥</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/概率-期望/">概率/期望</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/组合数学/">组合数学</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/贡献/">贡献</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数学/高斯消元/">高斯消元</a><span class="category-list-count">4</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/">数据结构</a><span class="category-list-count">18</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/主席树/">主席树</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/二叉搜索树/">二叉搜索树</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/可持久化Trie/">可持久化Trie</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/并查集/">并查集</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/树上莫队/">树上莫队</a><span class="category-list-count">3</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/树状数组/">树状数组</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/数据结构/线段树/">线段树</a><span class="category-list-count">5</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/">暴力</a><span class="category-list-count">7</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/大模拟/">大模拟</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/模拟/">模拟</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/暴力/签到/">签到</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/">琐事</a><span class="category-list-count">2</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/博客/">博客</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/琐事/面试/">面试</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/">计算几何</a><span class="category-list-count">14</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/三维几何/">三维几何</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/扫描线/">扫描线</a><span class="category-list-count">4</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/数值积分/">数值积分</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/旋转卡壳/">旋转卡壳</a><span class="category-list-count">1</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/极角扫描/">极角扫描</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/计算几何/极角排序/">极角排序</a><span class="category-list-count">1</span></li></ul></li><li class="category-list-item"><a class="category-list-link" href="/categories/贪心/">贪心</a><span class="category-list-count">5</span><ul class="category-list-child"><li class="category-list-item"><a class="category-list-link" href="/categories/贪心/区间贪心/">区间贪心</a><span class="category-list-count">1</span></li></ul></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/BIT/" style="font-size: 20px;">BIT</a> <a href="/tags/CRT/" style="font-size: 10px;">CRT</a> <a href="/tags/FFT/" style="font-size: 13.33px;">FFT</a> <a href="/tags/LCA/" style="font-size: 11.67px;">LCA</a> <a href="/tags/LIS/" style="font-size: 10px;">LIS</a> <a href="/tags/Lucas/" style="font-size: 10px;">Lucas</a> <a href="/tags/MST/" style="font-size: 10px;">MST</a> <a href="/tags/Manacher/" style="font-size: 11.67px;">Manacher</a> <a href="/tags/NTT/" style="font-size: 10px;">NTT</a> <a href="/tags/RMQ/" style="font-size: 10px;">RMQ</a> <a href="/tags/Voronoi图/" style="font-size: 10px;">Voronoi图</a> <a href="/tags/bfs/" style="font-size: 11.67px;">bfs</a> <a href="/tags/bitset/" style="font-size: 13.33px;">bitset</a> <a href="/tags/cdq分治/" style="font-size: 10px;">cdq分治</a> <a href="/tags/dfs/" style="font-size: 11.67px;">dfs</a> <a href="/tags/dp/" style="font-size: 16.67px;">dp</a> <a href="/tags/floyd/" style="font-size: 11.67px;">floyd</a> <a href="/tags/gcd/" style="font-size: 10px;">gcd</a> <a href="/tags/kmp/" style="font-size: 10px;">kmp</a> <a href="/tags/scc/" style="font-size: 10px;">scc</a> <a href="/tags/sg函数/" style="font-size: 10px;">sg函数</a> <a href="/tags/trie上贪心/" style="font-size: 10px;">trie上贪心</a> <a href="/tags/two-pointers/" style="font-size: 13.33px;">two pointers</a> <a href="/tags/xor-trie/" style="font-size: 16.67px;">xor trie</a> <a href="/tags/三分搜索/" style="font-size: 11.67px;">三分搜索</a> <a href="/tags/三维几何/" style="font-size: 10px;">三维几何</a> <a href="/tags/主席树/" style="font-size: 15px;">主席树</a> <a href="/tags/二分图最大匹配/" style="font-size: 10px;">二分图最大匹配</a> <a href="/tags/二分搜索/" style="font-size: 13.33px;">二分搜索</a> <a href="/tags/二维BIT/" style="font-size: 10px;">二维BIT</a> <a href="/tags/二维分块/" style="font-size: 10px;">二维分块</a> <a href="/tags/五边形数/" style="font-size: 10px;">五边形数</a> <a href="/tags/倍增/" style="font-size: 10px;">倍增</a> <a href="/tags/分块优化/" style="font-size: 10px;">分块优化</a> <a href="/tags/分治/" style="font-size: 11.67px;">分治</a> <a href="/tags/判断矩形相交/" style="font-size: 10px;">判断矩形相交</a> <a href="/tags/区间贪心/" style="font-size: 10px;">区间贪心</a> <a href="/tags/博客/" style="font-size: 10px;">博客</a> <a href="/tags/博弈/" style="font-size: 10px;">博弈</a> <a href="/tags/反转问题/" style="font-size: 10px;">反转问题</a> <a href="/tags/可持久trie/" style="font-size: 10px;">可持久trie</a> <a href="/tags/可持久化Trie/" style="font-size: 10px;">可持久化Trie</a> <a href="/tags/可行流/" style="font-size: 10px;">可行流</a> <a href="/tags/后缀数组/" style="font-size: 10px;">后缀数组</a> <a href="/tags/哈希/" style="font-size: 10px;">哈希</a> <a href="/tags/四面体内心/" style="font-size: 10px;">四面体内心</a> <a href="/tags/回文树/" style="font-size: 13.33px;">回文树</a> <a href="/tags/大模拟/" style="font-size: 10px;">大模拟</a> <a href="/tags/字典树/" style="font-size: 10px;">字典树</a> <a href="/tags/容斥/" style="font-size: 13.33px;">容斥</a> <a href="/tags/小结/" style="font-size: 10px;">小结</a> <a href="/tags/并查集/" style="font-size: 11.67px;">并查集</a> <a href="/tags/异或/" style="font-size: 10px;">异或</a> <a href="/tags/归并树/" style="font-size: 10px;">归并树</a> <a href="/tags/思维/" style="font-size: 10px;">思维</a> <a href="/tags/扫描线/" style="font-size: 15px;">扫描线</a> <a href="/tags/折半搜索/" style="font-size: 10px;">折半搜索</a> <a href="/tags/折半枚举/" style="font-size: 10px;">折半枚举</a> <a href="/tags/拓扑排序/" style="font-size: 16.67px;">拓扑排序</a> <a href="/tags/数位dp/" style="font-size: 11.67px;">数位dp</a> <a href="/tags/数值积分/" style="font-size: 10px;">数值积分</a> <a href="/tags/数形结合/" style="font-size: 10px;">数形结合</a> <a href="/tags/斜率优化/" style="font-size: 13.33px;">斜率优化</a> <a href="/tags/旋转卡壳/" style="font-size: 10px;">旋转卡壳</a> <a href="/tags/最大团/" style="font-size: 11.67px;">最大团</a> <a href="/tags/最大权匹配/" style="font-size: 10px;">最大权匹配</a> <a href="/tags/最大权闭合子图/" style="font-size: 10px;">最大权闭合子图</a> <a href="/tags/最大流/" style="font-size: 10px;">最大流</a> <a href="/tags/最小割/" style="font-size: 10px;">最小割</a> <a href="/tags/最小点覆盖/" style="font-size: 11.67px;">最小点覆盖</a> <a href="/tags/最小路径覆盖/" style="font-size: 10px;">最小路径覆盖</a> <a href="/tags/最短路/" style="font-size: 11.67px;">最短路</a> <a href="/tags/最远点对/" style="font-size: 10px;">最远点对</a> <a href="/tags/期望/" style="font-size: 10px;">期望</a> <a href="/tags/期望dp/" style="font-size: 13.33px;">期望dp</a> <a href="/tags/极角扫描/" style="font-size: 11.67px;">极角扫描</a> <a href="/tags/极角排序/" style="font-size: 11.67px;">极角排序</a> <a href="/tags/极限情况/" style="font-size: 10px;">极限情况</a> <a href="/tags/标记合并/" style="font-size: 10px;">标记合并</a> <a href="/tags/标记永久化/" style="font-size: 10px;">标记永久化</a> <a href="/tags/树上sg/" style="font-size: 10px;">树上sg</a> <a href="/tags/树上莫队/" style="font-size: 13.33px;">树上莫队</a> <a href="/tags/树哈希/" style="font-size: 10px;">树哈希</a> <a href="/tags/树形dp/" style="font-size: 13.33px;">树形dp</a> <a href="/tags/概率dp/" style="font-size: 11.67px;">概率dp</a> <a href="/tags/模拟/" style="font-size: 10px;">模拟</a> <a href="/tags/点双连通/" style="font-size: 10px;">点双连通</a> <a href="/tags/物理/" style="font-size: 10px;">物理</a> <a href="/tags/状压/" style="font-size: 10px;">状压</a> <a href="/tags/矩阵快速幂/" style="font-size: 10px;">矩阵快速幂</a> <a href="/tags/离线/" style="font-size: 20px;">离线</a> <a href="/tags/约数枚举/" style="font-size: 10px;">约数枚举</a> <a href="/tags/约瑟夫环/" style="font-size: 10px;">约瑟夫环</a> <a href="/tags/线性dp/" style="font-size: 11.67px;">线性dp</a> <a href="/tags/线性基/" style="font-size: 11.67px;">线性基</a> <a href="/tags/线段树/" style="font-size: 15px;">线段树</a> <a href="/tags/计算几何/" style="font-size: 10px;">计算几何</a> <a href="/tags/贡献/" style="font-size: 11.67px;">贡献</a> <a href="/tags/贪心/" style="font-size: 18.33px;">贪心</a> <a href="/tags/边双缩点/" style="font-size: 10px;">边双缩点</a> <a href="/tags/边双连通/" style="font-size: 11.67px;">边双连通</a> <a href="/tags/迭代/" style="font-size: 10px;">迭代</a> <a href="/tags/逆元/" style="font-size: 10px;">逆元</a> <a href="/tags/逆序数/" style="font-size: 10px;">逆序数</a> <a href="/tags/面试/" style="font-size: 10px;">面试</a> <a href="/tags/高斯消元/" style="font-size: 13.33px;">高斯消元</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/09/">2016年 09月</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/08/">2016年 08月</a><span class="archive-list-count">42</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/07/">2016年 07月</a><span class="archive-list-count">12</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/06/">2016年 06月</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/05/">2016年 05月</a><span class="archive-list-count">24</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/04/">2016年 04月</a><span class="archive-list-count">41</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2016/03/">2016年 03月</a><span class="archive-list-count">42</span></li></ul>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">最近评论</h3>
+    <div class="widget">
+      <!-- 多说最新评论 start -->
+      <div class="ds-recent-comments" data-num-items="5" data-show-avatars="0" data-show-time="1" data-show-title="1" data-show-admin="1" data-excerpt-length="70"></div>
+      <!-- 多说最新评论 end -->
+      <!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+      <script type="text/javascript">
+        var duoshuoQuery = {short_name:"Taos"};
+        (function() {
+          var ds = document.createElement('script');
+          ds.type = 'text/javascript';ds.async = true;
+          ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+          ds.charset = 'UTF-8';
+          (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+      </script>
+      <!-- 多说公共JS代码 end -->
+    </div>
+  </div>
+
+  
+</aside>
+      
+    </div>
+    <footer id="footer">
+  <script async src="https://dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"> </script>
+  
+  <div class="outer">
+    <div id="footer-info" class="inner" align = "center">
+      Copyright &copy; 2016 
+	  <a href="/" target="_blank"> TaoSama </a> <br>
+      Powered by <a href="https://hexo.io/zh-cn/docs/index.html" target="_blank">Hexo</a>
+	  &nbsp;|&nbsp;
+      Theme by <a href="https://github.com/TaoSama/landscape-plus" target="_blank">landscape-plus</a>
+	  &nbsp;|&nbsp;
+	  <span id="busuanzi_container_site_pv">
+        总访问量 <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_pv"></span></a> 次
+      </span>
+      <span id="busuanzi_container_site_uv">
+        <a href="http://service.ibruce.info/" target="_blank"><span id="busuanzi_value_site_uv"></span></a> 人
+      </span>  
+    </div>
+  </div>
+    <!-- 为超链接加上target='_blank'属性 -->
+	<script type="text/javascript">
+		$(document).ready(function() {
+			$('a[href^="http"]').each(function() {
+			$(this).attr('target', '_blank');
+		});
+	});
+	</script>
+</footer>
+  </div>
+  <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">首页</a>
+  
+    <a href="/archives" class="mobile-nav-link">文章</a>
+  
+    <a href="/about" class="mobile-nav-link">关于</a>
+  
+</nav>
+  <!-- totop start -->
+<div id="totop">
+<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+</div>
+
+<!-- totop end -->
+
+<!-- 多说公共js代码 start -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"Taos"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '/js/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0]
+     || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+  </script>
+<!-- 多说公共js代码 end -->
+
+
+<!-- 百度分享 start -->
+
+<div id="article-share-box" class="article-share-box">
+  <div id="bdshare" class="bdsharebuttonbox article-share-links">
+    <a class="article-share-weibo" data-cmd="tsina" title="分享到新浪微博"></a>
+    <a class="article-share-weixin" data-cmd="weixin" title="分享到微信"></a>
+    <a class="article-share-qq" data-cmd="sqq" title="分享到QQ"></a>
+    <a class="article-share-renren" data-cmd="renren" title="分享到人人网"></a>
+    <a class="article-share-more" data-cmd="more" title="更多"></a>
+  </div>
+</div>
+<script>
+  function SetShareData(cmd, config) {
+    if (shareDataTitle && shareDataUrl) {
+      config.bdText = shareDataTitle;
+      config.bdUrl = shareDataUrl;
+    }
+    return config;
+  }
+  window._bd_share_config={
+    "common":{onBeforeClick: SetShareData},
+    "share":{"bdCustomStyle":"/css/bdshare.css"}
+  };
+  with(document)0[(getElementsByTagName('head')[0]||body).appendChild(createElement('script')).src='http://bdimg.share.baidu.com/static/api/js/share.js?cdnversion='+~(-new Date()/36e5)];
+</script>
+
+<!-- 百度分享 end -->
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+
+<! -- mathjax config similar to math.stackexchange -->
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+                processEscapes: true
+                    
+}
+  
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+tex2jax: {
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+                  
+}
+    
+        });
+</script>
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Queue(function() {
+            var all = MathJax.Hub.getAllJax(), i;
+            for(i=0; i < all.length; i += 1) {
+                            all[i].SourceElement().parentNode.className += ' has-jax';
+                                    
+            }
+                
+        });
+</script>
+
+<script type="text/javascript" src="http://cdn.bootcss.com/mathjax/2.5.3/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+<script src="/js/script.js"></script>
+
+</div>
+</body>
+</html>
