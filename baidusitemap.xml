@@ -5,13 +5,13 @@
     
   <url>
     <loc>http://TaoSama.github.io/2016/09/23/51nod%201610%20%E8%B7%AF%E5%BE%84%E8%AE%A1%E6%95%B0%EF%BC%88dp%E3%80%81%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89/</loc>
-    <lastmod>2016-09-22T19:09:14.655Z</lastmod>
+    <lastmod>2017-02-23T14:15:09.061Z</lastmod>
     <data>
         <display>
-        <title>51nod 1610 路径计数（dp、容斥原理）</title>
+        <title>51nod 1610 路径计数（dp、容斥）</title>
         <pubTime>2016-09-22T16:52:10.000Z</pubTime>
         
-        <tag>容斥原理</tag>
+        <tag>容斥</tag>
          
          
            
@@ -19,7 +19,53 @@
               <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
           
              
-              <breadCrumb title="容斥原理" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"/>
+              <breadCrumb title="容斥" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/09/21/Codeforces%20451E.%20Devu%20and%20Flowers%EF%BC%88%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89/</loc>
+    <lastmod>2017-01-21T08:05:54.221Z</lastmod>
+    <data>
+        <display>
+        <title>Codeforces 451E. Devu and Flowers（容斥）</title>
+        <pubTime>2016-09-21T12:09:10.000Z</pubTime>
+        
+        <tag>容斥</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="容斥" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
+    <loc>http://TaoSama.github.io/2016/09/22/IFrog%201032%20-%20A-B%EF%BC%88%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89/</loc>
+    <lastmod>2016-10-01T19:07:45.052Z</lastmod>
+    <data>
+        <display>
+        <title>IFrog 1032 - A-B（容斥）</title>
+        <pubTime>2016-09-22T12:45:10.000Z</pubTime>
+        
+        <tag>容斥</tag>
+         
+         
+           
+             
+              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
+          
+             
+              <breadCrumb title="容斥" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5/"/>
           
         </display>
     </data>
@@ -45,52 +91,6 @@
           
              
               <breadCrumb title="生成树计数" url="http://TaoSama.github.io/categories/%E5%9B%BE%E8%AE%BA/%E7%94%9F%E6%88%90%E6%A0%91%E8%AE%A1%E6%95%B0/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://TaoSama.github.io/2016/09/22/IFrog%201032%20-%20A-B%EF%BC%88%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89/</loc>
-    <lastmod>2016-09-22T13:15:04.025Z</lastmod>
-    <data>
-        <display>
-        <title>IFrog 1032 - A-B（容斥原理）</title>
-        <pubTime>2016-09-22T12:45:10.000Z</pubTime>
-        
-        <tag>容斥原理</tag>
-         
-         
-           
-             
-              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-          
-             
-              <breadCrumb title="容斥原理" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"/>
-          
-        </display>
-    </data>
-    </url>
-
-    
-  <url>
-    <loc>http://TaoSama.github.io/2016/09/21/Codeforces%20451E.%20Devu%20and%20Flowers%EF%BC%88%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86%EF%BC%89/</loc>
-    <lastmod>2016-09-21T13:08:40.376Z</lastmod>
-    <data>
-        <display>
-        <title>Codeforces 451E. Devu and Flowers（容斥原理）</title>
-        <pubTime>2016-09-21T12:09:10.000Z</pubTime>
-        
-        <tag>容斥原理</tag>
-         
-         
-           
-             
-              <breadCrumb title="数学" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/"/>
-          
-             
-              <breadCrumb title="容斥原理" url="http://TaoSama.github.io/categories/%E6%95%B0%E5%AD%A6/%E5%AE%B9%E6%96%A5%E5%8E%9F%E7%90%86/"/>
           
         </display>
     </data>
