@@ -3,4 +3,4 @@ Disallow: /fancybox/
 Disallow: /archives/
 Disallow: /tags/
 Disallow: /test/
-Sitemap: http://www.devchen.com/sitemap.xml
+Sitemap: http://taosama.github.com/sitemap.xml
