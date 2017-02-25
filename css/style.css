@@ -644,6 +644,7 @@ td {
   padding: 10px 0;
 }
 blockquote {
+  overflow: auto;
   border-left: 4px solid #ddd;
   font-family: Georgia, "Times New Roman", serif;
   font-size: 1.2em;
