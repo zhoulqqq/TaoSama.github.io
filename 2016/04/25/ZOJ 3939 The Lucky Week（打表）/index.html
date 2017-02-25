@@ -276,7 +276,10 @@ $Lucky\ Week:某个星期一是这月的1、11、21号的话$$给定第1个Lucky
 			(function() {
 			  var ds = document.createElement('script');
 			  ds.type = 'text/javascript';ds.async = true;
+			  ds.src = '/js/ds_embed.js';
+			  <!--
 			  ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+			  -->
 			  ds.charset = 'UTF-8';
 			  (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
 			})();

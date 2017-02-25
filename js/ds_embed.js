@@ -1,7 +1,7 @@
 // admin reply
 function sskadmin(e) {
 	var ssk = '';
-	if(e.user_id==11838425){
+	if(e.user_id==6259705648129245953){
 		ssk = ' sskadmin'
 	}
 	return ssk;
