@@ -3,4 +3,5 @@ Disallow: /fancybox/
 Disallow: /archives/
 Disallow: /tags/
 Disallow: /test/
-Sitemap: http://taosama.github.com/sitemap.xml
+Disallow: /categories/
+Sitemap: http://taosama.com/sitemap.xml
