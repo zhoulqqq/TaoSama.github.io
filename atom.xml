@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TaoSama.github.io/"/>
-  <updated>2017-03-07T09:25:01.102Z</updated>
+  <updated>2017-03-11T19:41:32.566Z</updated>
   <id>http://TaoSama.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://TaoSama.github.io/2017/03/07/Coursera%20Machine%20Learning/"/>
     <id>http://TaoSama.github.io/2017/03/07/Coursera Machine Learning/</id>
     <published>2017-03-07T09:04:10.000Z</published>
-    <updated>2017-03-07T09:25:01.102Z</updated>
+    <updated>2017-03-11T19:41:32.566Z</updated>
     
     <content type="html">&lt;h3 id=&quot;前言&quot;&gt;&lt;a href=&quot;#前言&quot; class=&quot;headerlink&quot; title=&quot;前言&quot;&gt;&lt;/a&gt;前言&lt;/h3&gt;&lt;p&gt;总算是开始学习$ML$了，这个$Stanford$的课看了一下$Materials$发现被精简了好多啊&lt;br&gt;好处是通俗易懂，入门必备啊。。真是适合我这种数学渣&lt;/p&gt;
 &lt;a id=&quot;more&quot;&gt;&lt;/a&gt;
@@ -29,7 +29,25 @@
 &lt;li&gt;&lt;a href=&quot;https://www.zybuluo.com/TaoSama/note/675864&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;My Notes&lt;/a&gt;&lt;/li&gt;
 &lt;li&gt;&lt;a href=&quot;https://github.com/TaoSama/Coursera/tree/master/Machine%20Learning&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;My Exercises&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h3 id=&quot;后记&quot;&gt;&lt;a href=&quot;#后记&quot; class=&quot;headerlink&quot; title=&quot;后记&quot;&gt;&lt;/a&gt;后记&lt;/h3&gt;&lt;p&gt;加油加油，我发现我还是爱学习的？ 爱数学？(雾&lt;/p&gt;
+&lt;hr&gt;
+&lt;p&gt;&lt;del&gt;Updated&lt;/del&gt;&lt;/p&gt;
+&lt;h3 id=&quot;完成了&quot;&gt;&lt;a href=&quot;#完成了&quot; class=&quot;headerlink&quot; title=&quot;完成了&quot;&gt;&lt;/a&gt;完成了&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;现在是2017年3月12日 03:35:01，历时7天整，最终以$99.2\%$的成绩通过了&lt;/strong&gt;&lt;/li&gt;
+&lt;li&gt;基本都是一次通过，拿满可能做了$2\sim 3$次&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;除了Anomaly Detection和Recommender Systems各错了一个，前者做了$6$遍还是没拿满，我!@#$%^&amp;amp;&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;看到这个绿图还是很欣慰啊，就跟你大半夜日题看到$AC$一样的，勉强入门了？？&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img src=&quot;http://7xru22.com1.z0.glb.clouddn.com/17-3-12/37459681-file_1489260426139_8708.png&quot; alt=&quot;&quot;&gt;&lt;/p&gt;
+&lt;h3 id=&quot;后记&quot;&gt;&lt;a href=&quot;#后记&quot; class=&quot;headerlink&quot; title=&quot;后记&quot;&gt;&lt;/a&gt;后记&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;加油加油，我发现我还是爱学习的？ 爱数学？(雾&lt;/li&gt;
+&lt;li&gt;接下来可以玩一玩平台，工具啥的了&lt;/li&gt;
+&lt;li&gt;具体数学推导深入啥的，玩的过程中学可能更有效一点的&lt;/li&gt;
+&lt;li&gt;好像摆脱颓废的状态了，果然是忙起来就好了。。&lt;/li&gt;
+&lt;li&gt;感觉有空还是要把$cs229$的$lecture\ notes$看一看的，读了第一个感觉非常好啊&lt;/li&gt;
+&lt;li&gt;然后跟着他们一起学一学$DL$？ 再上一波$cs231n$了估计要&lt;/li&gt;
+&lt;/ul&gt;
 </content>
     
     <summary type="html">
