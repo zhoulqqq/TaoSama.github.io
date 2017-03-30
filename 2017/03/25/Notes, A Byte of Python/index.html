@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="TaoSama's Blog">
 <meta property="og:description" content="总结一下$python$的语法对于一个$cpp\ programmer$来说如何快速上手
 工具查阅。。">
-<meta property="og:updated_time" content="2017-03-30T10:12:20.756Z">
+<meta property="og:updated_time" content="2017-03-30T12:26:25.167Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Notes, A Byte of Python">
 <meta name="twitter:description" content="总结一下$python$的语法对于一个$cpp\ programmer$来说如何快速上手
@@ -149,15 +149,15 @@
 <li>浮点数(float) <code>type(1.0)</code> <strong>python不区分单双精度浮点数</strong></li>
 <li>复数(complex) <code>type(2.3+5j)</code></li>
 </ul>
-<h4 id="字符串-str"><a href="#字符串-str" class="headerlink" title="字符串(str)"></a>字符串(str)</h4><p> <strong>‘和”意思相同</strong> <code>&#39;hello&#39; &quot;hello&quot;</code><br><code>&#39;&#39;&#39;或者&quot;&quot;&quot;</code>多行引号 <strong>里面随便用’和” 会自动转义</strong> </p>
-<ul>
-<li>自然字符串<br>r或者R前缀 不会转义 <code>r&quot;new line\n&quot;</code></li>
+<h4 id="字符串-str"><a href="#字符串-str" class="headerlink" title="字符串(str)"></a>字符串(str)</h4><ul>
+<li><p><strong>‘和”意思相同</strong> <code>&#39;hello&#39; &quot;hello&quot;</code><br><code>&#39;&#39;&#39;或者&quot;&quot;&quot;</code>多行引号 <strong>里面随便用’和” 会自动转义</strong> </p>
+</li>
+<li><p>自然字符串<br>r或者R前缀 不会转义 <code>r&quot;new line\n&quot;</code></p>
+</li>
 <li><p>Unicode字符串<br>u或者U前缀 <code>u&quot;This is a unicode string&quot;</code></p>
 </li>
 <li><p>Tips:<br><strong>字符串是不可变的</strong><br><strong>正则表示式 一定要用自然字符串</strong><br><strong>行连接: (下面两个等价)</strong> </p>
-<blockquote>
-<p>print\<br>i<br>print i</p>
-</blockquote>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">print</span>\</span><br><span class="line">i</span><br><span class="line"><span class="keyword">print</span> i</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
 <h3 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h3><ul>
@@ -169,9 +169,115 @@
 <li>//取整除 <code>5//2.1=2.0</code></li>
 <li><p>逻辑运算符 <code>not and or</code></p>
 </li>
-<li><p>运算符优先级<br>运算符 | 描述<br>—|—<br>|lambda |Lambda表达式|<br>|or |布尔“或”|<br>|and| 布尔“与”|<br>|not| x 布尔“非”|<br>|in，not in| 成员测试|<br>|is，is not| 同一性测试|<br>|&lt;，&lt;=，&gt;，>=，!=，==| 比较|<br>| | |按位或|<br>|^ |按位异或|<br>|&amp; |按位与|<br>|&lt;&lt;，&gt;&gt; |移位|<br>|+，- |加法与减法<br>|_，/，%|乘法、除法与取余<br>|+x，-x| 正负号<br>|~x |按位翻转<br>|*_ | 指数<br>|x.attribute| 属性参考<br>|x[index]| 下标<br>|x[index:index]| 寻址段<br>|f(arguments…)| 函数调用<br>|(experession,…)| 绑定或元组显示<br>|[expression,…]| 列表显示<br>|{key:datum,…}| 字典显示<br>|’expression,…’| 字符串转换</p>
+<li><p>运算符优先级</p>
 </li>
 </ul>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">运算符</th>
+<th style="text-align:center">描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">lambda</td>
+<td style="text-align:center">lambda表达式</td>
+</tr>
+<tr>
+<td style="text-align:center">or</td>
+<td style="text-align:center">布尔“或”</td>
+</tr>
+<tr>
+<td style="text-align:center">and</td>
+<td style="text-align:center">布尔“与”</td>
+</tr>
+<tr>
+<td style="text-align:center">not</td>
+<td style="text-align:center">x 布尔“非”</td>
+</tr>
+<tr>
+<td style="text-align:center">in，not in</td>
+<td style="text-align:center">成员测试</td>
+</tr>
+<tr>
+<td style="text-align:center">is，is not</td>
+<td style="text-align:center">同一性测试</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;，&lt;=，&gt;，>=，!=，==</td>
+<td style="text-align:center">比较</td>
+</tr>
+<tr>
+<td style="text-align:center">&#124;</td>
+<td style="text-align:center">按位或</td>
+</tr>
+<tr>
+<td style="text-align:center">^</td>
+<td style="text-align:center">按位异或</td>
+</tr>
+<tr>
+<td style="text-align:center">&amp;</td>
+<td style="text-align:center">按位与</td>
+</tr>
+<tr>
+<td style="text-align:center">&lt;&lt;，&gt;&gt;</td>
+<td style="text-align:center">移位</td>
+</tr>
+<tr>
+<td style="text-align:center">+，-</td>
+<td style="text-align:center">加法与减法</td>
+</tr>
+<tr>
+<td style="text-align:center">*，/，%</td>
+<td style="text-align:center">乘法、除法与取余</td>
+</tr>
+<tr>
+<td style="text-align:center">+x，-x</td>
+<td style="text-align:center">正负号</td>
+</tr>
+<tr>
+<td style="text-align:center">~x</td>
+<td style="text-align:center">按位翻转</td>
+</tr>
+<tr>
+<td style="text-align:center">**</td>
+<td style="text-align:center">指数</td>
+</tr>
+<tr>
+<td style="text-align:center">x.attribute</td>
+<td style="text-align:center">属性参考</td>
+</tr>
+<tr>
+<td style="text-align:center">x[index]</td>
+<td style="text-align:center">下标</td>
+</tr>
+<tr>
+<td style="text-align:center">x[index:index]</td>
+<td style="text-align:center">寻址段</td>
+</tr>
+<tr>
+<td style="text-align:center">f(arguments…)</td>
+<td style="text-align:center">函数调用</td>
+</tr>
+<tr>
+<td style="text-align:center">(experession,…)</td>
+<td style="text-align:center">绑定或元组显示</td>
+</tr>
+<tr>
+<td style="text-align:center">[expression,…]</td>
+<td style="text-align:center">列表显示</td>
+</tr>
+<tr>
+<td style="text-align:center">{key:datum,…}</td>
+<td style="text-align:center">字典显示</td>
+</tr>
+<tr>
+<td style="text-align:center">`expression,…`</td>
+<td style="text-align:center">字符串转换</td>
+</tr>
+</tbody>
+</table>
 <h3 id="控制语句-不要忘记"><a href="#控制语句-不要忘记" class="headerlink" title="控制语句 (不要忘记:)"></a>控制语句 (不要忘记:)</h3><p><strong>else部分是可选的。如果包含else，它总是在循环结束后执行一次，除非遇到break</strong></p>
 <ul>
 <li><p>if和while</p>

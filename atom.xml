@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://TaoSama.github.io/"/>
-  <updated>2017-03-30T10:12:20.756Z</updated>
+  <updated>2017-03-30T12:26:25.167Z</updated>
   <id>http://TaoSama.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://TaoSama.github.io/2017/03/25/Notes,%20A%20Byte%20of%20Python/"/>
     <id>http://TaoSama.github.io/2017/03/25/Notes, A Byte of Python/</id>
     <published>2017-03-24T19:04:10.000Z</published>
-    <updated>2017-03-30T10:12:20.756Z</updated>
+    <updated>2017-03-30T12:26:25.167Z</updated>
     
     <content type="html">&lt;ul&gt;
 &lt;li&gt;总结一下$python$的语法对于一个$cpp\ programmer$来说如何快速上手&lt;/li&gt;
@@ -33,15 +33,15 @@
 &lt;li&gt;浮点数(float) &lt;code&gt;type(1.0)&lt;/code&gt; &lt;strong&gt;python不区分单双精度浮点数&lt;/strong&gt;&lt;/li&gt;
 &lt;li&gt;复数(complex) &lt;code&gt;type(2.3+5j)&lt;/code&gt;&lt;/li&gt;
 &lt;/ul&gt;
-&lt;h4 id=&quot;字符串-str&quot;&gt;&lt;a href=&quot;#字符串-str&quot; class=&quot;headerlink&quot; title=&quot;字符串(str)&quot;&gt;&lt;/a&gt;字符串(str)&lt;/h4&gt;&lt;p&gt; &lt;strong&gt;‘和”意思相同&lt;/strong&gt; &lt;code&gt;&amp;#39;hello&amp;#39; &amp;quot;hello&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;&lt;/code&gt;多行引号 &lt;strong&gt;里面随便用’和” 会自动转义&lt;/strong&gt; &lt;/p&gt;
-&lt;ul&gt;
-&lt;li&gt;自然字符串&lt;br&gt;r或者R前缀 不会转义 &lt;code&gt;r&amp;quot;new line\n&amp;quot;&lt;/code&gt;&lt;/li&gt;
+&lt;h4 id=&quot;字符串-str&quot;&gt;&lt;a href=&quot;#字符串-str&quot; class=&quot;headerlink&quot; title=&quot;字符串(str)&quot;&gt;&lt;/a&gt;字符串(str)&lt;/h4&gt;&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;strong&gt;‘和”意思相同&lt;/strong&gt; &lt;code&gt;&amp;#39;hello&amp;#39; &amp;quot;hello&amp;quot;&lt;/code&gt;&lt;br&gt;&lt;code&gt;&amp;#39;&amp;#39;&amp;#39;或者&amp;quot;&amp;quot;&amp;quot;&lt;/code&gt;多行引号 &lt;strong&gt;里面随便用’和” 会自动转义&lt;/strong&gt; &lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p&gt;自然字符串&lt;br&gt;r或者R前缀 不会转义 &lt;code&gt;r&amp;quot;new line\n&amp;quot;&lt;/code&gt;&lt;/p&gt;
+&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Unicode字符串&lt;br&gt;u或者U前缀 &lt;code&gt;u&amp;quot;This is a unicode string&amp;quot;&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;&lt;p&gt;Tips:&lt;br&gt;&lt;strong&gt;字符串是不可变的&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;正则表示式 一定要用自然字符串&lt;/strong&gt;&lt;br&gt;&lt;strong&gt;行连接: (下面两个等价)&lt;/strong&gt; &lt;/p&gt;
-&lt;blockquote&gt;
-&lt;p&gt;print\&lt;br&gt;i&lt;br&gt;print i&lt;/p&gt;
-&lt;/blockquote&gt;
+&lt;figure class=&quot;highlight python&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;1&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;2&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;3&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt;\&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;i&lt;/span&gt;&lt;br&gt;&lt;span class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;print&lt;/span&gt; i&lt;/span&gt;&lt;br&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
 &lt;h3 id=&quot;变量&quot;&gt;&lt;a href=&quot;#变量&quot; class=&quot;headerlink&quot; title=&quot;变量&quot;&gt;&lt;/a&gt;变量&lt;/h3&gt;&lt;ul&gt;
@@ -53,9 +53,115 @@
 &lt;li&gt;//取整除 &lt;code&gt;5//2.1=2.0&lt;/code&gt;&lt;/li&gt;
 &lt;li&gt;&lt;p&gt;逻辑运算符 &lt;code&gt;not and or&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p&gt;运算符优先级&lt;br&gt;运算符 | 描述&lt;br&gt;—|—&lt;br&gt;|lambda |Lambda表达式|&lt;br&gt;|or |布尔“或”|&lt;br&gt;|and| 布尔“与”|&lt;br&gt;|not| x 布尔“非”|&lt;br&gt;|in，not in| 成员测试|&lt;br&gt;|is，is not| 同一性测试|&lt;br&gt;|&amp;lt;，&amp;lt;=，&amp;gt;，&gt;=，!=，==| 比较|&lt;br&gt;| | |按位或|&lt;br&gt;|^ |按位异或|&lt;br&gt;|&amp;amp; |按位与|&lt;br&gt;|&amp;lt;&amp;lt;，&amp;gt;&amp;gt; |移位|&lt;br&gt;|+，- |加法与减法&lt;br&gt;|_，/，%|乘法、除法与取余&lt;br&gt;|+x，-x| 正负号&lt;br&gt;|~x |按位翻转&lt;br&gt;|*_ | 指数&lt;br&gt;|x.attribute| 属性参考&lt;br&gt;|x[index]| 下标&lt;br&gt;|x[index:index]| 寻址段&lt;br&gt;|f(arguments…)| 函数调用&lt;br&gt;|(experession,…)| 绑定或元组显示&lt;br&gt;|[expression,…]| 列表显示&lt;br&gt;|{key:datum,…}| 字典显示&lt;br&gt;|’expression,…’| 字符串转换&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;运算符优先级&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ul&gt;
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;运算符&lt;/th&gt;
+&lt;th style=&quot;text-align:center&quot;&gt;描述&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lambda&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;lambda表达式&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;or&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;布尔“或”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;and&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;布尔“与”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;not&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;x 布尔“非”&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;in，not in&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;成员测试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;is，is not&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;同一性测试&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&amp;lt;，&amp;lt;=，&amp;gt;，&gt;=，!=，==&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;比较&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&amp;#124;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;按位或&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;^&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;按位异或&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&amp;amp;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;按位与&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;&amp;lt;&amp;lt;，&amp;gt;&amp;gt;&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;移位&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;+，-&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;加法与减法&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;*，/，%&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;乘法、除法与取余&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;+x，-x&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;正负号&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;~x&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;按位翻转&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;**&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;指数&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;x.attribute&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;属性参考&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;x[index]&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;下标&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;x[index:index]&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;寻址段&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;f(arguments…)&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;函数调用&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;(experession,…)&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;绑定或元组显示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;[expression,…]&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;列表显示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;{key:datum,…}&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;字典显示&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;`expression,…`&lt;/td&gt;
+&lt;td style=&quot;text-align:center&quot;&gt;字符串转换&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
 &lt;h3 id=&quot;控制语句-不要忘记&quot;&gt;&lt;a href=&quot;#控制语句-不要忘记&quot; class=&quot;headerlink&quot; title=&quot;控制语句 (不要忘记:)&quot;&gt;&lt;/a&gt;控制语句 (不要忘记:)&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;else部分是可选的。如果包含else，它总是在循环结束后执行一次，除非遇到break&lt;/strong&gt;&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;if和while&lt;/p&gt;
