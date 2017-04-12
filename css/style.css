@@ -580,6 +580,7 @@ a.article-title:hover {
 .article-entry {
   color: #555;
   padding: 0 20px;
+  overflow: auto;
 }
 .article-entry:before,
 .article-entry:after {
