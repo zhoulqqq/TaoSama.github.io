@@ -4,6 +4,27 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2017/04/24/So%20Sad/</loc>
+    <lastmod>2017-04-23T19:28:37.795Z</lastmod>
+    <data>
+        <display>
+        <title>So Sad</title>
+        <pubTime>2017-04-23T19:17:10.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Doing" url="http://TaoSama.github.io/categories/Doing/"/>
+          
+             
+              <breadCrumb title="Life" url="http://TaoSama.github.io/categories/Doing/Life/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2017/02/28/Roborn%20and%20Walk%20Alone/</loc>
     <lastmod>2017-04-12T15:13:08.393Z</lastmod>
     <data>
@@ -1380,9 +1401,9 @@
         <title>HDU 3364 Lanterns（线性基）</title>
         <pubTime>2016-08-06T09:39:10.000Z</pubTime>
         
-        <tag>高斯消元</tag>
-         
         <tag>线性基</tag>
+         
+        <tag>高斯消元</tag>
          
          
            
