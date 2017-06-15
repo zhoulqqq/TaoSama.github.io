@@ -4,8 +4,29 @@
 
     
   <url>
+    <loc>http://TaoSama.github.io/2017/06/15/Constructors-Destructors-and-Assignment-Operators/</loc>
+    <lastmod>2017-06-15T14:35:25.533Z</lastmod>
+    <data>
+        <display>
+        <title>Constructors, Destrustors and Assignment Operators, Notes(2), Effective C++</title>
+        <pubTime>2017-06-15T13:20:10.000Z</pubTime>
+        
+         
+           
+             
+              <breadCrumb title="Doing" url="http://TaoSama.github.io/categories/Doing/"/>
+          
+             
+              <breadCrumb title="CPP" url="http://TaoSama.github.io/categories/Doing/CPP/"/>
+          
+        </display>
+    </data>
+    </url>
+
+    
+  <url>
     <loc>http://TaoSama.github.io/2017/06/11/Accustoming-to-CPP/</loc>
-    <lastmod>2017-06-11T12:55:28.062Z</lastmod>
+    <lastmod>2017-06-12T03:39:50.186Z</lastmod>
     <data>
         <display>
         <title>Accustoming to CPP, Notes(1), Effective C++</title>
